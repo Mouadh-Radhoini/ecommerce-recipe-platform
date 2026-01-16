@@ -1,0 +1,14 @@
+package com.mouadh.backend.repository;
+
+import com.mouadh.backend.model.Order;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface OrderRepository extends MongoRepository<Order, String> {
+
+    List<Order> findByBuyerId(String buyerId);
+
+    Optional<Order> findByBuyerIdAndRecipeId(String buyerId, String recipeId);
+}
