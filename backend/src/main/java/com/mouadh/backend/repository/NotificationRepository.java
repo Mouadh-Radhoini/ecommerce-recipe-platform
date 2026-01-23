@@ -5,7 +5,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface NotificationRepository extends MongoRepository<Notification, String> {
+public interface NotificationRepository
+        extends MongoRepository<Notification, String> {
 
-    List<Notification> findByChefIdAndReadFalse(String chefId);
+    List<Notification> findByUserId(String userId);
 }

@@ -1,17 +1,19 @@
 package com.mouadh.backend.service;
 
+import com.mouadh.backend.dto.auth.AuthResponse;
 import com.mouadh.backend.dto.auth.BuyerRegisterRequest;
 import com.mouadh.backend.dto.auth.ChefRegisterRequest;
+import com.mouadh.backend.dto.auth.LoginRequest;
+import com.mouadh.backend.model.BaseUser;
 import com.mouadh.backend.model.Buyer;
 import com.mouadh.backend.model.Chef;
-import com.mouadh.backend.model.BaseUser;
 import com.mouadh.backend.repository.BuyerRepository;
 import com.mouadh.backend.repository.ChefRepository;
+import com.mouadh.backend.security.JwtService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class AuthService {
@@ -19,15 +21,19 @@ public class AuthService {
     private final BuyerRepository buyerRepository;
     private final ChefRepository chefRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
     public AuthService(BuyerRepository buyerRepository,
                        ChefRepository chefRepository,
-                       PasswordEncoder passwordEncoder) {
+                       PasswordEncoder passwordEncoder,
+                       JwtService jwtService) {
         this.buyerRepository = buyerRepository;
         this.chefRepository = chefRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
+    // ---------------- REGISTER BUYER ----------------
     public void registerBuyer(BuyerRegisterRequest request) {
 
         if (emailExists(request.getEmail())) {
@@ -43,6 +49,7 @@ public class AuthService {
         buyerRepository.save(buyer);
     }
 
+    // ---------------- REGISTER CHEF ----------------
     public void registerChef(ChefRegisterRequest request) {
 
         if (emailExists(request.getEmail())) {
@@ -59,25 +66,27 @@ public class AuthService {
         chefRepository.save(chef);
     }
 
+    // ---------------- LOGIN ----------------
+    public AuthResponse login(LoginRequest request) {
 
-    public BaseUser login(String email, String rawPassword) {
-
-        Optional<? extends BaseUser> user =
-                buyerRepository.findByEmail(email)
-                        .map(b -> (BaseUser) b)
-                        .or(() -> chefRepository.findByEmail(email)
-                                .map(c -> (BaseUser) c));
-
-        BaseUser foundUser = user
+        BaseUser user = buyerRepository.findByEmail(request.getEmail())
+                .map(b -> (BaseUser) b)
+                .or(() -> chefRepository.findByEmail(request.getEmail())
+                        .map(c -> (BaseUser) c))
                 .orElseThrow(() -> new RuntimeException("Invalid credentials"));
 
-        if (!passwordEncoder.matches(rawPassword, foundUser.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid credentials");
         }
 
-        return foundUser;
+        String role = (user instanceof Chef) ? "ROLE_CHEF" : "ROLE_BUYER";
+
+        String token = jwtService.generateToken(user.getId(), role);
+
+        return new AuthResponse(token, role);
     }
 
+    // ---------------- UTILITY ----------------
     private boolean emailExists(String email) {
         return buyerRepository.findByEmail(email).isPresent()
                 || chefRepository.findByEmail(email).isPresent();

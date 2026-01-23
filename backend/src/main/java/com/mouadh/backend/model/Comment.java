@@ -1,24 +1,27 @@
 package com.mouadh.backend.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "comments")
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Document(collection = "comments")
 public class Comment {
 
     @Id
     private String id;
 
-    private String buyerId;
+    // Recipe being commented on
     private String recipeId;
 
+    // Author of the comment (buyerId OR chefId)
+    private String userId;
+
     private String content;
+
+    private LocalDateTime createdAt;
 }

@@ -1,6 +1,5 @@
 package com.mouadh.backend.security;
 
-import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,35 +22,55 @@ public class JwtFilter extends OncePerRequestFilter {
         this.jwtService = jwtService;
     }
 
+    // 🚨 IMPORTANT: SKIP AUTH ENDPOINTS
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain filterChain)
-            throws ServletException, IOException {
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        return path.startsWith("/api/auth/");
+    }
 
-        String authHeader = request.getHeader("Authorization");
+    @Override
+    protected void doFilterInternal(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain
+    ) throws ServletException, IOException {
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        String header = request.getHeader("Authorization");
 
-            String token = authHeader.substring(7);
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
 
             try {
-                Claims claims = jwtService.validateToken(token);
+                // ✅ VALIDATE TOKEN BEFORE TRUSTING IT
+                if (jwtService.isTokenValid(token) && !jwtService.isTokenExpired(token)) {
+                    
+                    String userId = jwtService.extractUserId(token);
+                    String role = jwtService.extractRole(token);
 
-                String userId = claims.getSubject();
-                String role = claims.get("role", String.class);
+                    UsernamePasswordAuthenticationToken auth =
+                            new UsernamePasswordAuthenticationToken(
+                                    userId,
+                                    null,
+                                    List.of(new SimpleGrantedAuthority(role))
+                            );
 
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(
-                                userId,
-                                null,
-                                List.of(new SimpleGrantedAuthority(role))
-                        );
-
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                    
+                } else {
+                    // Token is invalid or expired
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\":\"Invalid or expired token\"}");
+                    return;
+                }
+                
             } catch (Exception e) {
-                SecurityContextHolder.clearContext();
+                // Token parsing failed (malformed, wrong signature, etc.)
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.setContentType("application/json");
+                response.getWriter().write("{\"error\":\"Invalid token: " + e.getMessage() + "\"}");
+                return;
             }
         }
 

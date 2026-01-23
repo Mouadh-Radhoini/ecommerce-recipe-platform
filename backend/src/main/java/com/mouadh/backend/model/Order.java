@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Document(collection = "orders")
 @Getter
 @Setter
@@ -18,7 +20,12 @@ public class Order {
     private String id;
 
     private String buyerId;
+
     private String recipeId;
 
+    private Double amount;
+
     private OrderStatus status;
+
+    private LocalDateTime createdAt;
 }

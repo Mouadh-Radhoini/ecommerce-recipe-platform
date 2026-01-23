@@ -1,3 +1,16 @@
 spring:
   application:
     name: backend
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/ecommerce_recipe_db
+
+# JWT Configuration
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  # Base64-encoded 256-bit key - CHANGE THIS IN PRODUCTION!
+  # Generated with: openssl rand -base64 32
+  expiration: 86400000  # 24 hours in milliseconds
+
+server:
+  port: 8080
