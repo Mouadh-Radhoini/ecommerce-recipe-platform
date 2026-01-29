@@ -1,6 +1,7 @@
 package com.mouadh.backend.service;
 
 import com.mouadh.backend.dto.auth.AuthResponse;
+import com.mouadh.backend.dto.auth.AuthUserResponse;
 import com.mouadh.backend.dto.auth.BuyerRegisterRequest;
 import com.mouadh.backend.dto.auth.ChefRegisterRequest;
 import com.mouadh.backend.dto.auth.LoginRequest;
@@ -34,7 +35,7 @@ public class AuthService {
     }
 
     // ---------------- REGISTER BUYER ----------------
-    public void registerBuyer(BuyerRegisterRequest request) {
+    public AuthResponse registerBuyer(BuyerRegisterRequest request) {
 
         if (emailExists(request.getEmail())) {
             throw new RuntimeException("Email already in use");
@@ -46,11 +47,12 @@ public class AuthService {
         buyer.setPassword(passwordEncoder.encode(request.getPassword()));
         buyer.setCreatedAt(LocalDateTime.now());
 
-        buyerRepository.save(buyer);
+        Buyer savedBuyer = buyerRepository.save(buyer);
+        return buildAuthResponse(savedBuyer);
     }
 
     // ---------------- REGISTER CHEF ----------------
-    public void registerChef(ChefRegisterRequest request) {
+    public AuthResponse registerChef(ChefRegisterRequest request) {
 
         if (emailExists(request.getEmail())) {
             throw new RuntimeException("Email already in use");
@@ -63,7 +65,8 @@ public class AuthService {
         chef.setCreatedAt(LocalDateTime.now());
         chef.setTotalEarnings(0.0);
 
-        chefRepository.save(chef);
+        Chef savedChef = chefRepository.save(chef);
+        return buildAuthResponse(savedChef);
     }
 
     // ---------------- LOGIN ----------------
@@ -79,14 +82,24 @@ public class AuthService {
             throw new RuntimeException("Invalid credentials");
         }
 
-        String role = (user instanceof Chef) ? "ROLE_CHEF" : "ROLE_BUYER";
-
-        String token = jwtService.generateToken(user.getId(), role);
-
-        return new AuthResponse(token, role);
+        return buildAuthResponse(user);
     }
 
     // ---------------- UTILITY ----------------
+    private AuthResponse buildAuthResponse(BaseUser user) {
+        String role = (user instanceof Chef) ? "CHEF" : "BUYER";
+        String authorityRole = "ROLE_" + role;
+        String token = jwtService.generateToken(user.getId(), authorityRole);
+        AuthUserResponse authUser = new AuthUserResponse(
+                user.getId(),
+                user.getEmail(),
+                user.getName(),
+                role,
+                user.getCreatedAt()
+        );
+        return new AuthResponse(token, authUser);
+    }
+
     private boolean emailExists(String email) {
         return buyerRepository.findByEmail(email).isPresent()
                 || chefRepository.findByEmail(email).isPresent();

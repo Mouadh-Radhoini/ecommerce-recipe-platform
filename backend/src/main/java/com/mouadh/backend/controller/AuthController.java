@@ -16,13 +16,13 @@ public class AuthController {
     }
 
     @PostMapping("/register/buyer")
-    public void registerBuyer(@Valid @RequestBody BuyerRegisterRequest req) {
-        authService.registerBuyer(req);
+    public AuthResponse registerBuyer(@Valid @RequestBody BuyerRegisterRequest req) {
+        return authService.registerBuyer(req);
     }
 
     @PostMapping("/register/chef")
-    public void registerChef(@Valid @RequestBody ChefRegisterRequest req) {
-        authService.registerChef(req);
+    public AuthResponse registerChef(@Valid @RequestBody ChefRegisterRequest req) {
+        return authService.registerChef(req);
     }
 
     @PostMapping("/login")
