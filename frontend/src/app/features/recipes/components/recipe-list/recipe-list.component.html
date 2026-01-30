@@ -1,0 +1,71 @@
+<div class="recipe-list-container">
+    <div class="page-header">
+        <div class="page-title">
+            <h1>Recipes</h1>
+            <p>Browse fresh recipes from top chefs.</p>
+        </div>
+
+        <form class="filters" (ngSubmit)="onSearch()">
+            <div class="search">
+                <input type="text" [formControl]="searchControl" placeholder="Search recipes" />
+                <button type="submit">Search</button>
+            </div>
+            <div class="sort">
+                <label for="sort">Sort</label>
+                <select id="sort" [formControl]="sortControl" (change)="onSortChange()">
+                    <option value="latest">Latest</option>
+                    <option value="priceAsc">Price: Low to High</option>
+                    <option value="priceDesc">Price: High to Low</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    @if (isLoading()) {
+        <app-loader></app-loader>
+    } @else {
+        @if (recipes().length === 0) {
+            <div class="empty-state">
+                <h3>No recipes found</h3>
+                <p>Try adjusting your search or filters.</p>
+            </div>
+        } @else {
+            <div class="recipe-grid">
+                @for (recipe of recipes(); track recipe.id) {
+                    <a class="recipe-card" [routerLink]="['/recipes', recipe.id]">
+                        <div class="card-image">
+                            @if (recipe.imageUrl) {
+                                <img [src]="recipe.imageUrl" [alt]="recipe.title" loading="lazy" />
+                            } @else {
+                                <div class="image-placeholder">No image</div>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <h3>{{ recipe.title }}</h3>
+                            <p>
+                                {{ recipe.description | slice:0:120 }}
+                                @if (recipe.description.length > 120) { ... }
+                            </p>
+                            <div class="card-meta">
+                                @if (recipe.chefName) {
+                                    <span>By {{ recipe.chefName }}</span>
+                                }
+                                @if (recipe.rating !== undefined) {
+                                    <app-rating-stars [rating]="recipe.rating"></app-rating-stars>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            @if (recipe.price !== undefined) {
+                                <span class="price">{{ recipe.price | currency }}</span>
+                            } @else {
+                                <span></span>
+                            }
+                            <span class="details">View details</span>
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+    }
+</div>

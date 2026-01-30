@@ -1,21 +1,22 @@
 export interface Recipe {
-    id: string;
+    id: string | number;
     title: string;
     description: string;
-    price: number;
+    price?: number;
+    rating?: number;
     imageUrl?: string;
-    chefId: string;
-    chefName: string;
-    ingredients: Ingredient[];
-    steps: RecipeStep[];
+    chefName?: string;
+    createdAt?: string;
+    chefId?: string;
+    ingredients?: Ingredient[];
+    steps?: RecipeStep[];
     category?: string;
     cookingTime?: number; // in minutes
     servings?: number;
     difficulty?: 'EASY' | 'MEDIUM' | 'HARD';
-    rating?: number;
     reviewCount?: number;
-    createdAt: Date;
-    updatedAt?: Date;
+    updatedAt?: string;
+    [key: string]: unknown;
 }
 
 export interface Ingredient {

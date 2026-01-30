@@ -15,8 +15,8 @@ import { AuthService } from '../../core/services/auth.service';
         </div>
 
         <nav class="nav">
-          <a routerLink="/recipes">Recipes</a>
           @if (authService.isAuthenticated()) {
+            <a routerLink="/recipes">Recipes</a>
             @if (authService.userRole() === 'CHEF') {
               <a routerLink="/my-recipes">My Recipes</a>
               <a routerLink="/dashboard">Dashboard</a>

@@ -34,7 +34,14 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
                         errorMessage = 'Server error. Please try again later.';
                         break;
                     default:
-                        errorMessage = error.error?.message || `Error: ${error.status}`;
+                        if (typeof error.error === 'string') {
+                            errorMessage = error.error;
+                        } else if (error.error && typeof error.error === 'object' && !Array.isArray(error.error)) {
+                            const messages = Object.values(error.error).filter((value) => typeof value === 'string');
+                            errorMessage = messages.length ? messages.join(', ') : `Error: ${error.status}`;
+                        } else {
+                            errorMessage = error.error?.message || `Error: ${error.status}`;
+                        }
                 }
             }
 

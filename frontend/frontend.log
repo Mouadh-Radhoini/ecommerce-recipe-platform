@@ -42,3 +42,801 @@ Watch mode enabled. Watching for file changes...
 NOTE: Raw file sizes do not reflect development server per-request transformations.
   ➜  Local:   http://localhost:4200/
   ➜  Network: http://192.168.1.143:4200/
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names | Raw size
+main.js             | main  | 34.67 kB | 
+
+Application bundle generation complete. [0.391 seconds] - 2026-01-29T23:22:04.180Z
+
+Page reload sent to client(s).
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names                    |  Raw size
+main.js             | main                     |  34.67 kB | 
+styles.css          | styles                   |   7.22 kB | 
+chunk-SNPVYJ5N.js   | -                        |   4.23 kB | 
+chunk-34JPBG7P.js   | -                        | 835 bytes | 
+chunk-WATGWOI2.js   | -                        | 236 bytes | 
+
+                    | Initial total            |  47.20 kB
+
+Lazy chunk files    | Names                    |  Raw size
+chunk-4W2A55GF.js   | register-component       |  27.16 kB | 
+chunk-A6CGJBCS.js   | login-component          |  16.51 kB | 
+chunk-FSKQ4KAY.js   | unauthorized-component   |   5.16 kB | 
+chunk-JH7LFTXF.js   | chef-dashboard-component |   3.53 kB | 
+chunk-SMD5FBFX.js   | recipe-detail-component  |   3.49 kB | 
+chunk-JE5WP2JS.js   | edit-profile-component   |   3.46 kB | 
+chunk-OWIVTBBU.js   | recipe-form-component    |   3.46 kB | 
+chunk-PV55A4S7.js   | order-detail-component   |   3.46 kB | 
+chunk-7PLESEBQ.js   | recipe-list-component    |   3.45 kB | 
+chunk-UHAYJQBX.js   | user-profile-component   |   3.44 kB | 
+chunk-O2DHSSPM.js   | order-list-component     |   3.38 kB | 
+chunk-DN2GGPKH.js   | checkout-component       |   3.35 kB | 
+chunk-QR3CXUQH.js   | -                        |   2.16 kB | 
+
+Application bundle generation complete. [0.115 seconds] - 2026-01-29T23:22:22.444Z
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names                    |  Raw size
+main.js             | main                     |  34.67 kB | 
+styles.css          | styles                   |   7.22 kB | 
+chunk-SNPVYJ5N.js   | -                        |   4.23 kB | 
+chunk-34JPBG7P.js   | -                        | 835 bytes | 
+chunk-WATGWOI2.js   | -                        | 236 bytes | 
+
+                    | Initial total            |  47.20 kB
+
+Lazy chunk files    | Names                    |  Raw size
+chunk-4W2A55GF.js   | register-component       |  27.16 kB | 
+chunk-A6CGJBCS.js   | login-component          |  16.51 kB | 
+chunk-FSKQ4KAY.js   | unauthorized-component   |   5.16 kB | 
+chunk-JH7LFTXF.js   | chef-dashboard-component |   3.53 kB | 
+chunk-SMD5FBFX.js   | recipe-detail-component  |   3.49 kB | 
+chunk-JE5WP2JS.js   | edit-profile-component   |   3.46 kB | 
+chunk-OWIVTBBU.js   | recipe-form-component    |   3.46 kB | 
+chunk-PV55A4S7.js   | order-detail-component   |   3.46 kB | 
+chunk-7PLESEBQ.js   | recipe-list-component    |   3.45 kB | 
+chunk-UHAYJQBX.js   | user-profile-component   |   3.44 kB | 
+chunk-O2DHSSPM.js   | order-list-component     |   3.38 kB | 
+chunk-DN2GGPKH.js   | checkout-component       |   3.35 kB | 
+chunk-QR3CXUQH.js   | -                        |   2.16 kB | 
+
+Application bundle generation complete. [0.151 seconds] - 2026-01-29T23:22:35.977Z
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names | Raw size
+main.js             | main  | 34.74 kB | 
+
+Application bundle generation complete. [0.202 seconds] - 2026-01-29T23:23:43.215Z
+
+Component update sent to client(s).
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.205 seconds] - 2026-01-29T23:24:06.798Z
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG2008: Could not find template file './recipe-list.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.ts:16:17:
+[37m      16 │     templateUrl: [32m'./recipe-list.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.125 seconds] - 2026-01-29T23:24:23.137Z
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG2008: Could not find template file './recipe-list.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.ts:16:17:
+[37m      16 │     templateUrl: [32m'./recipe-list.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.222 seconds] - 2026-01-29T23:25:31.411Z
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG2008: Could not find template file './recipe-detail.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG2008: Could not find template file './recipe-list.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.ts:16:17:
+[37m      16 │     templateUrl: [32m'./recipe-list.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.235 seconds] - 2026-01-29T23:26:40.451Z
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.html:47:58:
+[37m      47 │ ...             @if ((recipe.description?.[32mlength[37m ?? 0) > 120) { ... }
+         ╵                                           [32m~~~~~~[0m
+
+  Warning occurs in the template of component RecipeListComponent.
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.ts:16:17:
+[37m      16 │     templateUrl: [32m'./recipe-list.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG2008: Could not find template file './recipe-detail.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.405 seconds] - 2026-01-29T23:42:36.446Z
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.html:47:58:
+[37m      47 │ ...             @if ((recipe.description?.[32mlength[37m ?? 0) > 120) { ... }
+         ╵                                           [32m~~~~~~[0m
+
+  Warning occurs in the template of component RecipeListComponent.
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.ts:16:17:
+[37m      16 │     templateUrl: [32m'./recipe-list.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG2008: Could not find template file './recipe-detail.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.154 seconds] - 2026-01-29T23:42:52.256Z
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.html:47:58:
+[37m      47 │ ...             @if ((recipe.description?.[32mlength[37m ?? 0) > 120) { ... }
+         ╵                                           [32m~~~~~~[0m
+
+  Warning occurs in the template of component RecipeListComponent.
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.ts:16:17:
+[37m      16 │     templateUrl: [32m'./recipe-list.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Parser Error: Unexpected token 'as' at column 10 in [recipe() as recipe] in /home/mouadh/Desktop/ecommerce-recipe-platform/frontend/src/app/features/recipes/components/recipe-detail/recipe-detail.component.html@6:13[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:7:13:
+[37m      7 │         @if ([32mrecipe() as recipe[37m) {
+        ╵              [32m~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'imageUrl' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:10:32:
+[37m      10 │                     @if (recipe.[32mimageUrl[37m) {
+         ╵                                 [32m~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'imageUrl' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:11:43:
+[37m      11 │ ...              <img [src]="recipe.[32mimageUrl[37m" [alt]="recipe.title" />
+         ╵                                     [32m~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'title' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:11:67:
+[37m      11 │ ...              <img [src]="recipe.imageUrl" [alt]="recipe.[32mtitle[37m" />
+         ╵                                                             [32m~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'title' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:17:34:
+[37m      17 │                     <h1>{{ recipe.[32mtitle[37m }}</h1>
+         ╵                                   [32m~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'chefName' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:19:36:
+[37m      19 │                         @if (recipe.[32mchefName[37m) {
+         ╵                                     [32m~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'chefName' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:20:47:
+[37m      20 │                             <span>By {{ recipe.[32mchefName[37m }}</span>
+         ╵                                                [32m~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'createdAt' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:22:36:
+[37m      22 │                         @if (recipe.[32mcreatedAt[37m) {
+         ╵                                     [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'createdAt' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:23:44:
+[37m      23 │ ...           <span>{{ recipe.[32mcreatedAt[37m | date:'mediumDate' }}</span>
+         ╵                               [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'rating' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:26:32:
+[37m      26 │                     @if (recipe.[32mrating[37m !== undefined) {
+         ╵                                 [32m~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'rating' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:27:59:
+[37m      27 │ ...    <app-rating-stars [rating]="recipe.[32mrating[37m"></app-rating-stars>
+         ╵                                           [32m~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'price' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:29:32:
+[37m      29 │                     @if (recipe.[32mprice[37m !== undefined) {
+         ╵                                 [32m~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'price' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:30:53:
+[37m      30 │ ...            <div class="price">{{ recipe.[32mprice[37m | currency }}</div>
+         ╵                                             [32m~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'description' does not exist on type 'WritableSignal<Recipe | null>'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:32:53:
+[37m      32 │ ...               <p class="description">{{ recipe.[32mdescription[37m }}</p>
+         ╵                                                    [32m~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.159 seconds] - 2026-01-29T23:50:42.063Z
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.html:47:58:
+[37m      47 │ ...             @if ((recipe.description?.[32mlength[37m ?? 0) > 120) { ... }
+         ╵                                           [32m~~~~~~[0m
+
+  Warning occurs in the template of component RecipeListComponent.
+
+    src/app/features/recipes/components/recipe-list/recipe-list.component.ts:16:17:
+[37m      16 │     templateUrl: [32m'./recipe-list.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Parser Error: Unexpected token 'as' at column 10 in [recipe() as currentRecipe] in /home/mouadh/Desktop/ecommerce-recipe-platform/frontend/src/app/features/recipes/components/recipe-detail/recipe-detail.component.html@6:13[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:7:13:
+[37m      7 │         @if ([32mrecipe() as currentRecipe[37m) {
+        ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:10:25:
+[37m      10 │                     @if ([32mcurrentRecipe[37m.imageUrl) {
+         ╵                          [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:11:36:
+[37m      11 │ ...             <img [src]="[32mcurrentRecipe[37m.imageUrl" [alt]="current...
+         ╵                             [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:11:67:
+[37m      11 │ ...<img [src]="currentRecipe.imageUrl" [alt]="[32mcurrentRecipe[37m.title" />
+         ╵                                               [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:17:27:
+[37m      17 │                     <h1>{{ [32mcurrentRecipe[37m.title }}</h1>
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:19:29:
+[37m      19 │                         @if ([32mcurrentRecipe[37m.chefName) {
+         ╵                              [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:20:40:
+[37m      20 │ ...                      <span>By {{ [32mcurrentRecipe[37m.chefName }}</span>
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:22:29:
+[37m      22 │                         @if ([32mcurrentRecipe[37m.createdAt) {
+         ╵                              [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:23:37:
+[37m      23 │ ...                <span>{{ [32mcurrentRecipe[37m.createdAt | date:'medium...
+         ╵                             [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:26:25:
+[37m      26 │                     @if ([32mcurrentRecipe[37m.rating !== undefined) {
+         ╵                          [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:27:52:
+[37m      27 │ ...p-rating-stars [rating]="[32mcurrentRecipe[37m.rating"></app-rating-stars>
+         ╵                             [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:29:25:
+[37m      29 │                     @if ([32mcurrentRecipe[37m.price !== undefined) {
+         ╵                          [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:30:46:
+[37m      30 │ ...     <div class="price">{{ [32mcurrentRecipe[37m.price | currency }}</div>
+         ╵                               [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:32:46:
+[37m      32 │ ...        <p class="description">{{ [32mcurrentRecipe[37m.description }}</p>
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.293 seconds] - 2026-01-29T23:50:57.145Z
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Parser Error: Unexpected token 'as' at column 10 in [recipe() as currentRecipe] in /home/mouadh/Desktop/ecommerce-recipe-platform/frontend/src/app/features/recipes/components/recipe-detail/recipe-detail.component.html@6:13[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:7:13:
+[37m      7 │         @if ([32mrecipe() as currentRecipe[37m) {
+        ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:10:25:
+[37m      10 │                     @if ([32mcurrentRecipe[37m.imageUrl) {
+         ╵                          [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:11:36:
+[37m      11 │ ...             <img [src]="[32mcurrentRecipe[37m.imageUrl" [alt]="current...
+         ╵                             [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:11:67:
+[37m      11 │ ...<img [src]="currentRecipe.imageUrl" [alt]="[32mcurrentRecipe[37m.title" />
+         ╵                                               [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:17:27:
+[37m      17 │                     <h1>{{ [32mcurrentRecipe[37m.title }}</h1>
+         ╵                            [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:19:29:
+[37m      19 │                         @if ([32mcurrentRecipe[37m.chefName) {
+         ╵                              [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:20:40:
+[37m      20 │ ...                      <span>By {{ [32mcurrentRecipe[37m.chefName }}</span>
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:22:29:
+[37m      22 │                         @if ([32mcurrentRecipe[37m.createdAt) {
+         ╵                              [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:23:37:
+[37m      23 │ ...                <span>{{ [32mcurrentRecipe[37m.createdAt | date:'medium...
+         ╵                             [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:26:25:
+[37m      26 │                     @if ([32mcurrentRecipe[37m.rating !== undefined) {
+         ╵                          [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:27:52:
+[37m      27 │ ...p-rating-stars [rating]="[32mcurrentRecipe[37m.rating"></app-rating-stars>
+         ╵                             [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:29:25:
+[37m      29 │                     @if ([32mcurrentRecipe[37m.price !== undefined) {
+         ╵                          [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:30:46:
+[37m      30 │ ...     <div class="price">{{ [32mcurrentRecipe[37m.price | currency }}</div>
+         ╵                               [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentRecipe' does not exist on type 'RecipeDetailComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.html:32:46:
+[37m      32 │ ...        <p class="description">{{ [32mcurrentRecipe[37m.description }}</p>
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component RecipeDetailComponent.
+
+    src/app/features/recipes/components/recipe-detail/recipe-detail.component.ts:15:17:
+[37m      15 │     templateUrl: [32m'./recipe-detail.component.html'[37m,
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names                    |  Raw size
+main.js             | main                     |  33.62 kB | 
+styles.css          | styles                   |   7.22 kB | 
+chunk-OJLAASOZ.js   | -                        |   4.23 kB | 
+chunk-II6F2XLB.js   | -                        |   1.74 kB | 
+chunk-653SOEEV.js   | -                        |   1.51 kB | 
+chunk-WATGWOI2.js   | -                        | 236 bytes | 
+
+                    | Initial total            |  48.56 kB
+
+Lazy chunk files    | Names                    |  Raw size
+chunk-XMZADG3P.js   | register-component       |  27.62 kB | 
+chunk-W3BGRFHV.js   | recipe-list-component    |  23.15 kB | 
+chunk-M3DU7I27.js   | login-component          |  16.54 kB | 
+chunk-QYUIFTMY.js   | recipe-detail-component  |  15.53 kB | 
+chunk-NUMMR4W2.js   | -                        |  13.26 kB | 
+chunk-MIPDTEAT.js   | unauthorized-component   |   5.16 kB | 
+chunk-UTYMG6SE.js   | chef-dashboard-component |   3.53 kB | 
+chunk-EFRCDF63.js   | edit-profile-component   |   3.46 kB | 
+chunk-E2IVLOLT.js   | recipe-form-component    |   3.46 kB | 
+chunk-UXN3NP43.js   | order-detail-component   |   3.46 kB | 
+chunk-RINFJFLN.js   | user-profile-component   |   3.44 kB | 
+chunk-7JBEBF7G.js   | order-list-component     |   3.38 kB | 
+chunk-VHMRXTUA.js   | checkout-component       |   3.35 kB | 
+chunk-GWXSVUWF.js   | -                        |   2.00 kB | 
+chunk-4CC344BJ.js   | -                        | 218 bytes | 
+
+Application bundle generation complete. [0.255 seconds] - 2026-01-29T23:51:50.459Z
+
+Page reload sent to client(s).
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names              | Raw size
+main.js             | main               | 33.62 kB | 
+
+Lazy chunk files    | Names              | Raw size
+chunk-C26COPW6.js   | register-component | 28.32 kB | 
+
+Application bundle generation complete. [0.264 seconds] - 2026-01-29T23:56:00.783Z
+
+Page reload sent to client(s).
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names              | Raw size
+main.js             | main               | 33.62 kB | 
+
+Lazy chunk files    | Names              | Raw size
+chunk-LEFC7SUP.js   | register-component | 28.45 kB | 
+
+Application bundle generation complete. [0.216 seconds] - 2026-01-29T23:58:24.957Z
+
+Page reload sent to client(s).

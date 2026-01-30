@@ -38,10 +38,21 @@ export class RegisterComponent {
         const password = form.get('password');
         const confirmPassword = form.get('confirmPassword');
 
-        if (password && confirmPassword && password.value !== confirmPassword.value) {
-            confirmPassword.setErrors({ passwordMismatch: true });
+        if (!password || !confirmPassword) {
+            return null;
+        }
+
+        if (password.value !== confirmPassword.value) {
+            const existingErrors = confirmPassword.errors ?? {};
+            confirmPassword.setErrors({ ...existingErrors, passwordMismatch: true });
             return { passwordMismatch: true };
         }
+
+        if (confirmPassword.hasError('passwordMismatch')) {
+            const { passwordMismatch, ...rest } = confirmPassword.errors ?? {};
+            confirmPassword.setErrors(Object.keys(rest).length ? rest : null);
+        }
+
         return null;
     }
 
@@ -54,14 +65,42 @@ export class RegisterComponent {
         this.isLoading.set(true);
         this.errorMessage.set(null);
 
-        const { confirmPassword, ...registrationData } = this.registerForm.value;
+        const rawValue = this.registerForm.getRawValue();
+        const trimmedName = rawValue.name.trim();
+        const trimmedEmail = rawValue.email.trim();
+
+        if (!trimmedName) {
+            this.registerForm.get('name')?.setErrors({ required: true });
+            this.isLoading.set(false);
+            return;
+        }
+
+        if (!trimmedEmail) {
+            this.registerForm.get('email')?.setErrors({ required: true });
+            this.isLoading.set(false);
+            return;
+        }
+
+        const { confirmPassword, ...registrationData } = {
+            ...rawValue,
+            name: trimmedName,
+            email: trimmedEmail
+        };
 
         this.authApiService.register(registrationData).subscribe({
             next: () => {
                 this.router.navigate(['/']);
             },
             error: (error) => {
-                this.errorMessage.set(error.message || 'Registration failed. Please try again.');
+                if (typeof error.message === 'string' && error.message.toLowerCase().includes('email')) {
+                    this.registerForm.get('email')?.setErrors({ server: true });
+                }
+                const message = error.message || 'Registration failed. Please try again.';
+                this.errorMessage.set(
+                    message.includes('Email already in use')
+                        ? 'Email already in use. Try another email or log in.'
+                        : message
+                );
                 this.isLoading.set(false);
             },
             complete: () => {

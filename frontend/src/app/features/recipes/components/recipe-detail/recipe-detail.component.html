@@ -1,0 +1,42 @@
+<div class="recipe-detail-container">
+    <a class="back-link" routerLink="/recipes">Back to recipes</a>
+
+    @if (isLoading()) {
+        <app-loader></app-loader>
+    } @else {
+        @if (recipe(); as currentRecipe) {
+            <div class="detail-card">
+                <div class="image">
+                    @if (currentRecipe.imageUrl) {
+                        <img [src]="currentRecipe.imageUrl" [alt]="currentRecipe.title" />
+                    } @else {
+                        <div class="image-placeholder">No image</div>
+                    }
+                </div>
+                <div class="content">
+                    <h1>{{ currentRecipe.title }}</h1>
+                    <div class="meta">
+                        @if (currentRecipe.chefName) {
+                            <span>By {{ currentRecipe.chefName }}</span>
+                        }
+                        @if (currentRecipe.createdAt) {
+                            <span>{{ currentRecipe.createdAt | date:'mediumDate' }}</span>
+                        }
+                    </div>
+                    @if (currentRecipe.rating !== undefined) {
+                        <app-rating-stars [rating]="currentRecipe.rating"></app-rating-stars>
+                    }
+                    @if (currentRecipe.price !== undefined) {
+                        <div class="price">{{ currentRecipe.price | currency }}</div>
+                    }
+                    <p class="description">{{ currentRecipe.description }}</p>
+                </div>
+            </div>
+        } @else {
+            <div class="not-found">
+                <h2>Recipe not found</h2>
+                <p>We could not find the recipe you are looking for.</p>
+            </div>
+        }
+    }
+</div>

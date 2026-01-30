@@ -18,6 +18,17 @@ export class RecipeService {
 
     constructor(private http: HttpClient) { }
 
+    getAllRecipes(params?: { search?: string; sort?: string; page?: number; size?: number }): Observable<Recipe[]> {
+        let httpParams = new HttpParams();
+
+        if (params?.search) httpParams = httpParams.set('search', params.search);
+        if (params?.sort) httpParams = httpParams.set('sort', params.sort);
+        if (params?.page !== undefined) httpParams = httpParams.set('page', params.page.toString());
+        if (params?.size !== undefined) httpParams = httpParams.set('size', params.size.toString());
+
+        return this.http.get<Recipe[]>(this.API_URL, { params: httpParams });
+    }
+
     getRecipes(filter?: RecipeFilter, page = 0, pageSize = 12): Observable<RecipeListResponse> {
         let params = new HttpParams()
             .set('page', page.toString())
@@ -35,7 +46,7 @@ export class RecipeService {
         return this.http.get<RecipeListResponse>(this.API_URL, { params });
     }
 
-    getRecipeById(id: string): Observable<Recipe> {
+    getRecipeById(id: string | number): Observable<Recipe> {
         return this.http.get<Recipe>(`${this.API_URL}/${id}`);
     }
 

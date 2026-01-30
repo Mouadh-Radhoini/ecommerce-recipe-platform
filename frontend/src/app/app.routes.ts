@@ -26,10 +26,12 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                canActivate: [authGuard],
                 loadComponent: () => import('./features/recipes/components/recipe-list/recipe-list.component').then(m => m.RecipeListComponent)
             },
             {
                 path: ':id',
+                canActivate: [authGuard],
                 loadComponent: () => import('./features/recipes/components/recipe-detail/recipe-detail.component').then(m => m.RecipeDetailComponent)
             }
         ]
