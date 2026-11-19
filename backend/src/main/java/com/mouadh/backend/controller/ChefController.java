@@ -3,6 +3,7 @@ package com.mouadh.backend.controller;
 import com.mouadh.backend.model.Chef;
 import com.mouadh.backend.service.ChefService;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,7 @@ public class ChefController {
     }
 
     @GetMapping("/me")
+    @PreAuthorize("hasRole('CHEF')")
     public Chef me(Authentication auth) {
         return chefService.getById(auth.getName());
     }

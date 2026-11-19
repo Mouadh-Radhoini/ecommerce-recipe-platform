@@ -1,0 +1,24 @@
+npm notice run frontend@0.0.0 test
+npm notice run ng test --watch=false
+❯ Building...
+✔ Building...
+Initial chunk files | Names         | Raw size
+spec-app-app.js     | spec-app-app  | 27.85 kB | 
+styles.css          | styles        |  7.14 kB | 
+chunk-CGZBV6BD.js   | -             |  4.07 kB | 
+init-testbed.js     | init-testbed  |  1.21 kB | 
+
+                    | Initial total | 40.28 kB
+
+Application bundle generation complete. [1.361 seconds] - 2026-11-19T22:34:35.518Z
+
+
+ RUN  v4.0.18 /home/mouadh/Documents/ecommerce-recipe-platform/frontend
+
+ ✓ |frontend| src/app/app.spec.ts (2 tests) 127ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  23:34:35
+   Duration  964ms (transform 91ms, setup 203ms, import 124ms, tests 127ms, environment 387ms)
+

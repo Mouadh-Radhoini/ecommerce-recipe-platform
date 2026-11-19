@@ -1,0 +1,36 @@
+npm notice run frontend@0.0.0 build
+npm notice run ng build
+❯ Building...
+✔ Building...
+Initial chunk files | Names                    |  Raw size | Estimated transfer size
+chunk-KAHZVWOY.js   | -                        | 254.57 kB |                70.23 kB
+main-KN7WGPBV.js    | main                     |  10.02 kB |                 3.06 kB
+styles-MGEIFA4Q.css | styles                   |   5.45 kB |                 1.55 kB
+chunk-JDIRB2GO.js   | -                        |   1.90 kB |               583 bytes
+chunk-GGSKGNWM.js   | -                        | 631 bytes |               631 bytes
+chunk-5VLTMIOH.js   | -                        |  79 bytes |                79 bytes
+chunk-SUFSVV5Q.js   | -                        |  68 bytes |                68 bytes
+
+                    | Initial total            | 272.71 kB |                76.20 kB
+
+Lazy chunk files    | Names                    |  Raw size | Estimated transfer size
+chunk-LD7DSILE.js   | -                        |  44.56 kB |                 9.14 kB
+chunk-LY5XF2IR.js   | register-component       |   9.73 kB |                 2.62 kB
+chunk-CXYXBYDZ.js   | recipe-list-component    |   7.59 kB |                 2.57 kB
+chunk-4QWKB46I.js   | login-component          |   5.27 kB |                 1.69 kB
+chunk-5IZKJ3GM.js   | recipe-detail-component  |   5.12 kB |                 1.85 kB
+chunk-ZGJSZCDI.js   | recipe-form-component    |   2.77 kB |                 1.17 kB
+chunk-AZOR6TMA.js   | -                        |   2.18 kB |               891 bytes
+chunk-YIO2UF2O.js   | checkout-component       |   1.99 kB |               922 bytes
+chunk-Q423DTN6.js   | order-list-component     |   1.48 kB |               753 bytes
+chunk-JMNR4WIT.js   | unauthorized-component   |   1.20 kB |               532 bytes
+chunk-AC724QCI.js   | chef-dashboard-component |   1.19 kB |               614 bytes
+chunk-E67G5YWQ.js   | -                        | 765 bytes |               765 bytes
+chunk-EZCHOQRH.js   | user-profile-component   | 606 bytes |               606 bytes
+chunk-RFQWEXKR.js   | -                        | 457 bytes |               457 bytes
+chunk-L6P6S7DZ.js   | -                        | 414 bytes |               414 bytes
+
+Application bundle generation complete. [2.358 seconds] - 2026-11-19T22:34:33.054Z
+
+Output location: /home/mouadh/Documents/ecommerce-recipe-platform/frontend/dist/frontend
+

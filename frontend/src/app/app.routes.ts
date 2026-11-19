@@ -42,6 +42,7 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                data: { onlyMine: true },
                 loadComponent: () => import('./features/recipes/components/recipe-list/recipe-list.component').then(m => m.RecipeListComponent)
             },
             {
@@ -49,14 +50,14 @@ export const routes: Routes = [
                 loadComponent: () => import('./features/recipes/components/recipe-form/recipe-form.component').then(m => m.RecipeFormComponent)
             },
             {
-                path: 'edit/:id',
-                loadComponent: () => import('./features/recipes/components/recipe-form/recipe-form.component').then(m => m.RecipeFormComponent)
+                path: '**',
+                redirectTo: ''
             }
         ]
     },
     {
         path: 'orders',
-        canActivate: [authGuard],
+        canActivate: [authGuard, buyerGuard],
         children: [
             {
                 path: '',
@@ -64,7 +65,7 @@ export const routes: Routes = [
             },
             {
                 path: ':id',
-                loadComponent: () => import('./features/orders/components/order-detail/order-detail.component').then(m => m.OrderDetailComponent)
+                redirectTo: ''
             }
         ]
     },
@@ -83,7 +84,7 @@ export const routes: Routes = [
             },
             {
                 path: 'edit',
-                loadComponent: () => import('./features/profile/components/edit-profile/edit-profile.component').then(m => m.EditProfileComponent)
+                redirectTo: ''
             }
         ]
     },

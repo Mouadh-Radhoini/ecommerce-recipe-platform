@@ -20,8 +20,12 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
                 switch (error.status) {
                     case 401:
                         // Unauthorized - logout and redirect to login
-                        errorMessage = 'Session expired. Please log in again.';
-                        authService.logout();
+                        if (req.url.includes('/api/auth/login')) {
+                            errorMessage = 'Invalid credentials.';
+                        } else {
+                            errorMessage = 'Session expired. Please log in again.';
+                            authService.logout();
+                        }
                         break;
                     case 403:
                         errorMessage = 'You do not have permission to access this resource.';
@@ -44,11 +48,6 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
                         }
                 }
             }
-
-            console.error('HTTP Error:', errorMessage, error);
-
-            // You can integrate with a toast/notification service here
-            // Example: inject(ToastService).error(errorMessage);
 
             return throwError(() => new Error(errorMessage));
         })

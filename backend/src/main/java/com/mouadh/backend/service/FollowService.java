@@ -1,5 +1,8 @@
 package com.mouadh.backend.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.mouadh.backend.model.Follow;
 import com.mouadh.backend.repository.FollowRepository;
 import org.springframework.stereotype.Service;
@@ -17,7 +20,7 @@ public class FollowService {
 
         repo.findByFollowerIdAndChefId(buyerId, chefId)
                 .ifPresent(f -> {
-                    throw new RuntimeException("Already following this chef");
+                    throw new ResponseStatusException(HttpStatus.CONFLICT, "Already following this chef");
                 });
 
         Follow follow = new Follow();

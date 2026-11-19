@@ -1,5 +1,6 @@
 package  com.mouadh.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public abstract class BaseUser {
     @Indexed(unique = true)
     protected String email;
     
+    @JsonIgnore
     protected String password;
     
     protected LocalDateTime createdAt;

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecommerce-recipe-backend</a> &gt; <a href="index.source.html" class="el_package">com.mouadh.backend.dto.recipe</a> &gt; <span class="el_source">RecipeRequest.java</span></div><h1>RecipeRequest.java</h1><pre class="source lang-java linenums">package com.mouadh.backend.dto.recipe;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PositiveOrZero;
+
+import java.util.List;
+
+<span class="fc" id="L9">public class RecipeRequest {</span>
+
+    @NotBlank
+    private String title;
+
+    @NotBlank
+    private String description;
+
+    @NotEmpty
+    private List&lt;String&gt; ingredients;
+
+    @NotEmpty
+    private List&lt;String&gt; steps;
+
+    private boolean premium;
+
+    @PositiveOrZero
+    private Double price;
+
+    // getters &amp; setters
+<span class="fc" id="L29">    public String getTitle() { return title; }</span>
+<span class="nc" id="L30">    public void setTitle(String title) { this.title = title; }</span>
+
+<span class="fc" id="L32">    public String getDescription() { return description; }</span>
+<span class="nc" id="L33">    public void setDescription(String description) { this.description = description; }</span>
+
+<span class="fc" id="L35">    public List&lt;String&gt; getIngredients() { return ingredients; }</span>
+<span class="nc" id="L36">    public void setIngredients(List&lt;String&gt; ingredients) { this.ingredients = ingredients; }</span>
+
+<span class="fc" id="L38">    public List&lt;String&gt; getSteps() { return steps; }</span>
+<span class="nc" id="L39">    public void setSteps(List&lt;String&gt; steps) { this.steps = steps; }</span>
+
+<span class="fc" id="L41">    public boolean isPremium() { return premium; }</span>
+<span class="fc" id="L42">    public void setPremium(boolean premium) { this.premium = premium; }</span>
+
+<span class="fc" id="L44">    public Double getPrice() { return price; }</span>
+<span class="fc" id="L45">    public void setPrice(Double price) { this.price = price; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

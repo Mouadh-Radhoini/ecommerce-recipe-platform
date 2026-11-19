@@ -1,0 +1,15 @@
+
+Running 2 tests using 1 worker
+
+(node:178725) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:178725) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 frontend/e2e/chef-journey.spec.cjs:5:1 › UI-01 chef publishes a recipe through the form, then logs out (1.7s)
+(node:178916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:178916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 frontend/e2e/chef-journey.spec.cjs:5:1 › UI-01 chef publishes a recipe through the form, then logs out (1.8s)
+
+  2 passed (5.8s)

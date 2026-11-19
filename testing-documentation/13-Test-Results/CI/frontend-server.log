@@ -1,0 +1,36 @@
+npm notice run frontend@0.0.0 start
+npm notice run ng serve --host 127.0.0.1 --port 14202 --proxy-config /tmp/tmp.8MNL2DFzT7/proxy.json
+❯ Building...
+✔ Building...
+Initial chunk files | Names                    |  Raw size
+main.js             | main                     |  33.64 kB | 
+styles.css          | styles                   |   7.18 kB | 
+chunk-OJLAASOZ.js   | -                        |   4.23 kB | 
+chunk-II6F2XLB.js   | -                        |   1.74 kB | 
+chunk-653SOEEV.js   | -                        |   1.51 kB | 
+chunk-GR64QIK4.js   | -                        | 236 bytes | 
+chunk-JNAUAMUI.js   | -                        | 197 bytes | 
+
+                    | Initial total            |  48.74 kB
+
+Lazy chunk files    | Names                    |  Raw size
+chunk-XQI4QYL2.js   | register-component       |  28.58 kB | 
+chunk-OLSAM2PH.js   | recipe-list-component    |  24.93 kB | 
+chunk-PVFLR4PS.js   | recipe-detail-component  |  19.97 kB | 
+chunk-65DGYGXH.js   | login-component          |  16.54 kB | 
+chunk-4EM76N7U.js   | -                        |  10.13 kB | 
+chunk-BCTVNDRI.js   | recipe-form-component    |   8.74 kB | 
+chunk-PPO4TVFG.js   | checkout-component       |   6.63 kB | 
+chunk-DQ4OKZDT.js   | order-list-component     |   6.05 kB | 
+chunk-6BBQLPRR.js   | unauthorized-component   |   5.16 kB | 
+chunk-K5SVWDHS.js   | chef-dashboard-component |   4.67 kB | 
+chunk-H4QLXJ27.js   | user-profile-component   |   3.31 kB | 
+chunk-DISG4HTV.js   | -                        |   2.00 kB | 
+chunk-Z6RXI337.js   | -                        |   1.33 kB | 
+chunk-XBBG4MOT.js   | -                        |   1.08 kB | 
+
+Application bundle generation complete. [2.156 seconds] - 2026-11-19T22:34:49.993Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://127.0.0.1:14202/

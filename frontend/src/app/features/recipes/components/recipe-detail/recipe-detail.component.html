@@ -30,6 +30,21 @@
                         <div class="price">{{ currentRecipe.price | currency }}</div>
                     }
                     <p class="description">{{ currentRecipe.description }}</p>
+                    @if (currentRecipe.fullAccess) {
+                        <h2>Ingredients</h2>
+                        <ul>@for (ingredient of currentRecipe.ingredients ?? []; track $index) {
+                            <li>{{ ingredient }}</li>
+                        }</ul>
+                        <h2>Steps</h2>
+                        <ol>@for (step of currentRecipe.steps ?? []; track $index) {
+                            <li>{{ step }}</li>
+                        }</ol>
+                    } @else if (currentRecipe.premium) {
+                        <p>This premium recipe requires a paid order to view the ingredients and steps.</p>
+                        @if (auth.userRole() === 'BUYER') {
+                            <a routerLink="/checkout" [queryParams]="{ recipeId: currentRecipe.id }">Review order</a>
+                        }
+                    }
                 </div>
             </div>
         } @else {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecommerce-recipe-backend</a> &gt; <a href="index.source.html" class="el_package">com.mouadh.backend.controller</a> &gt; <span class="el_source">AuthController.java</span></div><h1>AuthController.java</h1><pre class="source lang-java linenums">package com.mouadh.backend.controller;
+
+import com.mouadh.backend.dto.auth.*;
+import com.mouadh.backend.service.AuthService;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(&quot;/api/auth&quot;)
+public class AuthController {
+
+    private final AuthService authService;
+
+<span class="fc" id="L14">    public AuthController(AuthService authService) {</span>
+<span class="fc" id="L15">        this.authService = authService;</span>
+<span class="fc" id="L16">    }</span>
+
+    @PostMapping(&quot;/register/buyer&quot;)
+    public AuthResponse registerBuyer(@Valid @RequestBody BuyerRegisterRequest req) {
+<span class="nc" id="L20">        return authService.registerBuyer(req);</span>
+    }
+
+    @PostMapping(&quot;/register/chef&quot;)
+    public AuthResponse registerChef(@Valid @RequestBody ChefRegisterRequest req) {
+<span class="nc" id="L25">        return authService.registerChef(req);</span>
+    }
+
+    @PostMapping(&quot;/login&quot;)
+    public AuthResponse login(@Valid @RequestBody LoginRequest req) {
+<span class="nc" id="L30">        return authService.login(req);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

@@ -1,22 +1,28 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../../core/services/auth.service';
+import { RecipeService } from '../../../recipes/services/recipe.service';
 
 @Component({
     selector: 'app-chef-dashboard',
-    standalone: true,
-    imports: [CommonModule],
+    imports: [RouterLink],
     template: `
-    <div class="dashboard-container">
-      <h1>Chef Dashboard</h1>
-      <p>Component placeholder - implement chef analytics and sales stats here</p>
-    </div>
-  `,
-    styles: [`
-    .dashboard-container {
-      padding: 2rem;
-    }
-  `]
+        <h1>Chef dashboard</h1>
+        @if (recipeCount() !== null) { <p>Published recipes: {{ recipeCount() }}</p> }
+        @if (error()) { <p role="alert">{{ error() }}</p> }
+        <p><a routerLink="/my-recipes">View my recipes</a></p>
+        <p><a routerLink="/my-recipes/create">Create recipe</a></p>
+    `
 })
 export class ChefDashboardComponent {
-    // TODO: Implement dashboard with sales stats, revenue charts, popular recipes
+    readonly recipeCount = signal<number | null>(null);
+    readonly error = signal('');
+
+    constructor() {
+        const chefId = inject(AuthService).currentUser()?.id;
+        inject(RecipeService).getAllRecipes().subscribe({
+            next: recipes => this.recipeCount.set(recipes.filter(recipe => recipe.chefId === chefId).length),
+            error: error => this.error.set(error.message)
+        });
+    }
 }

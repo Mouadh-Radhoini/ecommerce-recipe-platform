@@ -1,0 +1,762 @@
+{
+  "info": {
+    "name": "Ecommerce Recipe Platform - Software Validation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:18081"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const url = pm.variables.get('baseUrl');",
+          "if (!/^http:\\/\\/(localhost|127\\.0\\.0\\.1):[0-9]+$/.test(url)) {",
+          "    pm.execution.skipRequest();",
+          "    throw new Error('Use an isolated loopback backend');",
+          "}",
+          "if (pm.info.requestName.startsWith('API-01')) {",
+          "    const id = pm.variables.replaceIn('{{$guid}}');",
+          "    pm.collectionVariables.set('runId', id);",
+          "    for (const role of ['buyer', 'chef']) {",
+          "        pm.collectionVariables.set(role + 'Email', role + '-' + id + '@example.test');",
+          "        pm.collectionVariables.set(role + 'Password', pm.variables.replaceIn('{{$guid}}'));",
+          "        pm.collectionVariables.unset(role + 'Token');",
+          "    }",
+          "    pm.collectionVariables.unset('recipeId');",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "API-01 Register buyer",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/register/buyer",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Validation Buyer\", \"email\": \"{{buyerEmail}}\", \"password\": \"{{buyerPassword}}\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('Authenticated BUYER identity', () => {",
+              "    pm.expect(body.token).to.be.a('string').and.not.empty;",
+              "    pm.expect(body.user.id).to.be.a('string').and.not.empty;",
+              "    pm.expect(body.user.email).to.equal(pm.variables.get('buyerEmail'));",
+              "    pm.expect(body.user.role).to.equal('BUYER');",
+              "    pm.expect(body.user).not.to.have.property('password');",
+              "});",
+              "pm.collectionVariables.set('buyerToken', body.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-02 Register chef",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/register/chef",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Validation Chef\", \"email\": \"{{chefEmail}}\", \"password\": \"{{chefPassword}}\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('Authenticated CHEF identity', () => {",
+              "    pm.expect(body.token).to.be.a('string').and.not.empty;",
+              "    pm.expect(body.user.id).to.be.a('string').and.not.empty;",
+              "    pm.expect(body.user.email).to.equal(pm.variables.get('chefEmail'));",
+              "    pm.expect(body.user.role).to.equal('CHEF');",
+              "    pm.expect(body.user).not.to.have.property('password');",
+              "});",
+              "pm.collectionVariables.set('chefToken', body.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-03 Login buyer",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/login",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"{{buyerEmail}}\", \"password\": \"{{buyerPassword}}\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('Authenticated BUYER identity', () => {",
+              "    pm.expect(body.token).to.be.a('string').and.not.empty;",
+              "    pm.expect(body.user.id).to.be.a('string').and.not.empty;",
+              "    pm.expect(body.user.email).to.equal(pm.variables.get('buyerEmail'));",
+              "    pm.expect(body.user.role).to.equal('BUYER');",
+              "    pm.expect(body.user).not.to.have.property('password');",
+              "});",
+              "pm.collectionVariables.set('buyerToken', body.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-04 Incorrect password",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/login",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"{{buyerEmail}}\", \"password\": \"IncorrectFixtureOnly\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 401', () => pm.response.to.have.status(401));",
+              "pm.test('Error contract', () => pm.expect(pm.response.json().error).to.equal('Invalid credentials'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-05 Missing JWT",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": []
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 401', () => pm.response.to.have.status(401));",
+              "pm.test('Empty security response', () => pm.expect(pm.response.text()).to.be.empty);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-06 Authenticated listing",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Listing is an array', () => pm.expect(pm.response.json()).to.be.an('array'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-07 Buyer cannot publish",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Validation {{runId}}\", \"description\": \"Disposable recipe\", \"ingredients\": [\"Tomato\"], \"steps\": [\"Simmer\"], \"premium\": true, \"price\": 4.25}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 403', () => pm.response.to.have.status(403));",
+              "pm.test('Empty security response', () => pm.expect(pm.response.text()).to.be.empty);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-08 Chef publishes premium recipe",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{chefToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Validation {{runId}}\", \"description\": \"Disposable recipe\", \"ingredients\": [\"Tomato\"], \"steps\": [\"Simmer\"], \"premium\": true, \"price\": 4.25}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('Created recipe matches fixture', () => {",
+              "    pm.expect(body.id).to.be.a('string').and.not.empty;",
+              "    pm.expect(body.title).to.equal('Validation ' + pm.variables.get('runId'));",
+              "    pm.expect(body.price).to.equal(4.25);",
+              "    pm.expect(body.premium).to.be.true;",
+              "    pm.expect(body.steps).to.deep.equal(['Simmer']);",
+              "});",
+              "pm.collectionVariables.set('recipeId', body.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-09 Blank title rejected",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{chefToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \" \", \"description\": \"Disposable recipe\", \"ingredients\": [\"Tomato\"], \"steps\": [\"Simmer\"], \"premium\": true, \"price\": 4.25}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400', () => pm.response.to.have.status(400));",
+              "pm.test('Error contract', () => pm.expect(pm.response.json().title).to.equal('must not be blank'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-10 Missing recipe",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/recipes/absent-{{runId}}",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404', () => pm.response.to.have.status(404));",
+              "pm.test('Error contract', () => pm.expect(pm.response.json().error).to.equal('Recipe not found'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-11 Unpaid premium content stays hidden",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/recipes/{{recipeId}}",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Preview omits premium contents', () => {",
+              "    const body = pm.response.json();",
+              "    pm.expect(body.id).to.equal(pm.variables.get('recipeId'));",
+              "    pm.expect(body.premium).to.be.true;",
+              "    pm.expect(body.fullAccess).to.be.false;",
+              "    pm.expect(body.ingredients == null).to.be.true;",
+              "    pm.expect(body.steps == null).to.be.true;",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-12 Duplicate email rejected across roles",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/register/chef",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Validation Buyer\", \"email\": \"{{buyerEmail}}\", \"password\": \"{{buyerPassword}}\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 409', () => pm.response.to.have.status(409));",
+              "pm.test('Error contract', () => pm.expect(pm.response.json().error).to.equal('Email already in use'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-13 Create pending order",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/orders/{{recipeId}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Pending order has expected amount and recipe', () => {",
+              "    const order = pm.response.json();",
+              "    pm.expect(order.id).to.be.a('string').and.not.empty;",
+              "    pm.expect(order.recipeId).to.equal(pm.variables.get('recipeId'));",
+              "    pm.expect(order.status).to.equal('PENDING');",
+              "    pm.expect(order.amount).to.equal(4.25);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-14 Duplicate pending order rejected",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/orders/{{recipeId}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 409', () => pm.response.to.have.status(409));",
+              "pm.test('Error contract', () => pm.expect(pm.response.json().error).to.equal('Recipe already purchased'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-15 Buyer sees pending order",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/orders/my",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Own orders include newly created order', () => {",
+              "    const orders = pm.response.json();",
+              "    pm.expect(orders).to.be.an('array');",
+              "    pm.expect(orders.some(order => order.recipeId === pm.variables.get('recipeId') && order.status === 'PENDING')).to.be.true;",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-16 Malformed registration email",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/register/buyer",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Boundary buyer\", \"email\": \"invalid-address\", \"password\": \"Pass1234\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400', () => pm.response.to.have.status(400));",
+              "pm.test('Validation error for email', () => pm.expect(pm.response.json().email).to.be.a('string').and.not.empty);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-17 Seven-character password rejected",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/register/buyer",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Boundary buyer\", \"email\": \"boundary-{{runId}}@example.test\", \"password\": \"Pass123\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400', () => pm.response.to.have.status(400));",
+              "pm.test('Validation error for password', () => pm.expect(pm.response.json().password).to.be.a('string').and.not.empty);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-18 Eight-character password accepted",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/auth/register/buyer",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Boundary buyer\", \"email\": \"boundary-{{runId}}@example.test\", \"password\": \"Pass1234\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Buyer identity matches fixture', () => { const body = pm.response.json(); pm.expect(body.user.role).to.equal('BUYER'); pm.expect(body.user.email).to.equal('boundary-' + pm.variables.get('runId') + '@example.test'); pm.expect(body.token).to.be.a('string').and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-19 Chef publishes free recipe",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{chefToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Regression {{runId}}\", \"description\": \"Disposable recipe\", \"ingredients\": [\"Tomato\"], \"steps\": [\"Simmer\"], \"premium\": false, \"price\": 6}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json(); pm.test('Free recipe has zero price', () => { pm.expect(body.id).to.be.a('string').and.not.empty; pm.expect(body.price).to.equal(0); }); pm.collectionVariables.set('freeRecipeId', body.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-20 Free recipe purchase rejected",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/orders/{{freeRecipeId}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{buyerToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400', () => pm.response.to.have.status(400));",
+              "pm.test('Free purchase rejected', () => pm.expect(pm.response.json().error).to.equal('Free recipes do not require purchase'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-21 Empty ingredient list rejected",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{chefToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Regression {{runId}}\", \"description\": \"Disposable recipe\", \"ingredients\": [], \"steps\": [\"Simmer\"], \"premium\": false, \"price\": 6}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400', () => pm.response.to.have.status(400));",
+              "pm.test('Validation error for ingredients', () => pm.expect(pm.response.json().ingredients).to.be.a('string').and.not.empty);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-22 Empty step list rejected",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{chefToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Regression {{runId}}\", \"description\": \"Disposable recipe\", \"ingredients\": [\"Tomato\"], \"steps\": [], \"premium\": false, \"price\": 6}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400', () => pm.response.to.have.status(400));",
+              "pm.test('Validation error for steps', () => pm.expect(pm.response.json().steps).to.be.a('string').and.not.empty);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "API-23 Invalid JWT is denied",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/recipes",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer invalid-test-fixture"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 401', () => pm.response.to.have.status(401));",
+              "pm.test('JWT rejection error contract', () => pm.expect(pm.response.json().error).to.equal('Invalid or expired token'));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "baseUrl": "http://127.0.0.1:18082",
+  "expected": 15,
+  "statistics": {
+    "iterations": {
+      "total": 1,
+      "pending": 0,
+      "failed": 0
+    },
+    "items": {
+      "total": 15,
+      "pending": 0,
+      "failed": 0
+    },
+    "scripts": {
+      "total": 30,
+      "pending": 0,
+      "failed": 0
+    },
+    "prerequests": {
+      "total": 15,
+      "pending": 0,
+      "failed": 0
+    },
+    "requests": {
+      "total": 15,
+      "pending": 0,
+      "failed": 0
+    },
+    "tests": {
+      "total": 15,
+      "pending": 0,
+      "failed": 0
+    },
+    "assertions": {
+      "total": 30,
+      "pending": 0,
+      "failed": 0
+    },
+    "testScripts": {
+      "total": 15,
+      "pending": 0,
+      "failed": 0
+    },
+    "prerequestScripts": {
+      "total": 15,
+      "pending": 0,
+      "failed": 0
+    }
+  },
+  "scenarios": [
+    {
+      "name": "API-01 Register buyer",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Authenticated BUYER identity",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-02 Register chef",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Authenticated CHEF identity",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-03 Login buyer",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Authenticated BUYER identity",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-04 Incorrect password",
+      "httpStatus": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "status": "PASS"
+        },
+        {
+          "name": "Error contract",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-05 Missing JWT",
+      "httpStatus": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "status": "PASS"
+        },
+        {
+          "name": "Empty security response",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-06 Authenticated listing",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Listing is an array",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-07 Buyer cannot publish",
+      "httpStatus": 403,
+      "assertions": [
+        {
+          "name": "HTTP 403",
+          "status": "PASS"
+        },
+        {
+          "name": "Empty security response",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-08 Chef publishes premium recipe",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Created recipe matches fixture",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-09 Blank title rejected",
+      "httpStatus": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "PASS"
+        },
+        {
+          "name": "Error contract",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-10 Missing recipe",
+      "httpStatus": 404,
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "status": "PASS"
+        },
+        {
+          "name": "Error contract",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-11 Unpaid premium content stays hidden",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Preview omits premium contents",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-12 Duplicate email rejected across roles",
+      "httpStatus": 409,
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "status": "PASS"
+        },
+        {
+          "name": "Error contract",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-13 Create pending order",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Pending order has expected amount and recipe",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-14 Duplicate pending order rejected",
+      "httpStatus": 409,
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "status": "PASS"
+        },
+        {
+          "name": "Error contract",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "API-15 Buyer sees pending order",
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Own orders include newly created order",
+          "status": "PASS"
+        }
+      ]
+    }
+  ]
+}

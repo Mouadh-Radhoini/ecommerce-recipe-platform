@@ -1,0 +1,15 @@
+stage	exit_code
+backend-verify	0
+integration-repeat	0
+spotbugs	0
+frontend-install	0
+frontend-build	0
+frontend-test	0
+backend-ready	0
+newman	0
+frontend-ready	0
+playwright	0
+k6-1	0
+k6-export-1	0
+k6-2	0
+k6-export-2	0

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JwtService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecommerce-recipe-backend</a> &gt; <a href="index.source.html" class="el_package">com.mouadh.backend.security</a> &gt; <span class="el_source">JwtService.java</span></div><h1>JwtService.java</h1><pre class="source lang-java linenums">package com.mouadh.backend.security;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import javax.crypto.SecretKey;
+import java.util.Date;
+import java.util.HexFormat;
+
+@Service
+public class JwtService {
+
+    private final SecretKey secretKey;
+    private final long expirationTime;
+
+    public JwtService(
+            @Value(&quot;${jwt.secret}&quot;) String secret,
+            @Value(&quot;${jwt.expiration}&quot;) long expirationTime
+<span class="fc" id="L22">    ) {</span>
+        // Convert hex string to SecretKey for JJWT 0.12.x
+<span class="fc" id="L24">        this.secretKey = Keys.hmacShaKeyFor(HexFormat.of().parseHex(secret));</span>
+<span class="fc" id="L25">        this.expirationTime = expirationTime;</span>
+<span class="fc" id="L26">    }</span>
+
+    // ✅ Generate JWT token
+    public String generateToken(String userId, String role) {
+<span class="nc" id="L30">        return Jwts.builder()</span>
+<span class="nc" id="L31">                .subject(userId)</span>
+<span class="nc" id="L32">                .claim(&quot;role&quot;, role)</span>
+<span class="nc" id="L33">                .issuedAt(new Date())</span>
+<span class="nc" id="L34">                .expiration(new Date(System.currentTimeMillis() + expirationTime))</span>
+<span class="nc" id="L35">                .signWith(secretKey)</span>
+<span class="nc" id="L36">                .compact();</span>
+    }
+
+    // ✅ Extract userId from token
+    public String extractUserId(String token) {
+<span class="nc" id="L41">        return extractClaims(token).getSubject();</span>
+    }
+
+    // ✅ Extract role from token
+    public String extractRole(String token) {
+<span class="nc" id="L46">        return extractClaims(token).get(&quot;role&quot;, String.class);</span>
+    }
+
+    // ✅ Validate token (signature + expiration)
+    public boolean isTokenValid(String token) {
+        try {
+<span class="nc" id="L52">            extractClaims(token);</span>
+<span class="nc" id="L53">            return true;</span>
+<span class="nc" id="L54">        } catch (Exception e) {</span>
+<span class="nc" id="L55">            return false;</span>
+        }
+    }
+
+    // ✅ Check if token is expired
+    public boolean isTokenExpired(String token) {
+        try {
+<span class="nc" id="L62">            return extractClaims(token).getExpiration().before(new Date());</span>
+<span class="nc" id="L63">        } catch (Exception e) {</span>
+<span class="nc" id="L64">            return true;</span>
+        }
+    }
+
+    // 🔒 Internal helper - parses and validates token
+    private Claims extractClaims(String token) {
+<span class="nc" id="L70">        return Jwts.parser()</span>
+<span class="nc" id="L71">                .verifyWith(secretKey)</span>
+<span class="nc" id="L72">                .build()</span>
+<span class="nc" id="L73">                .parseSignedClaims(token)</span>
+<span class="nc" id="L74">                .getPayload();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

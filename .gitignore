@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Local validation dependencies and browser traces with fixture credentials
+testing/validation/node_modules/
+testing-documentation/13-Test-Results/UI/**/*.zip

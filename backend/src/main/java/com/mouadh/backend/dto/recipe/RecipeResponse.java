@@ -1,10 +1,17 @@
 package com.mouadh.backend.dto.recipe;
 
 import java.util.List;
+import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
 public class RecipeResponse {
 
     private String id;
+    @Getter @Setter
+    private String chefId;
+    @Getter @Setter
+    private LocalDateTime createdAt;
     private String title;
     private String description;
     private List<String> ingredients;

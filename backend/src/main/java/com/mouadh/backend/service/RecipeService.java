@@ -1,5 +1,8 @@
 package com.mouadh.backend.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.mouadh.backend.dto.recipe.RecipeRequest;
 import com.mouadh.backend.dto.recipe.RecipeResponse;
 import com.mouadh.backend.model.Recipe;
@@ -24,6 +27,11 @@ public class RecipeService {
 
     // ---------------- CREATE RECIPE ----------------
     public RecipeResponse createRecipe(RecipeRequest request, String chefId) {
+
+        if (request.isPremium() && (request.getPrice() == null
+                || !Double.isFinite(request.getPrice()) || request.getPrice() <= 0)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Premium recipes require a positive price");
+        }
 
         Recipe recipe = new Recipe();
         recipe.setTitle(request.getTitle());
@@ -52,7 +60,7 @@ public class RecipeService {
     public RecipeResponse getRecipeById(String recipeId, String userId) {
 
         Recipe recipe = recipeRepository.findById(recipeId)
-                .orElseThrow(() -> new RuntimeException("Recipe not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Recipe not found"));
 
         boolean fullAccess =
                 !recipe.isPremium()
@@ -67,6 +75,8 @@ public class RecipeService {
 
         RecipeResponse response = new RecipeResponse();
         response.setId(recipe.getId());
+        response.setChefId(recipe.getChefId());
+        response.setCreatedAt(recipe.getCreatedAt());
         response.setTitle(recipe.getTitle());
         response.setDescription(recipe.getDescription());
         response.setPremium(recipe.isPremium());

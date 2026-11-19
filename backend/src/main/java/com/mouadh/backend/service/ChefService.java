@@ -1,5 +1,8 @@
 package com.mouadh.backend.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.mouadh.backend.model.Chef;
 import com.mouadh.backend.repository.ChefRepository;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,6 @@ public class ChefService {
 
     public Chef getById(String id) {
         return chefRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Chef not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Chef not found"));
     }
 }

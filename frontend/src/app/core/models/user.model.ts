@@ -6,9 +6,10 @@ export enum UserRole {
 export interface BaseUser {
     id: string;
     email: string;
-    username: string;
+    name: string;
+    username?: string;
     role: UserRole;
-    createdAt: Date;
+    createdAt: string;
     updatedAt?: Date;
     avatarUrl?: string;
     bio?: string;

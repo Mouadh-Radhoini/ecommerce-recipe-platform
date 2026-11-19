@@ -1,0 +1,24 @@
+(node:157416) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+API-01 Register buyer 200 PASS, PASS
+API-02 Register chef 200 PASS, PASS
+API-03 Login buyer 200 PASS, PASS
+API-04 Incorrect password 401 PASS, PASS
+API-05 Missing JWT 401 PASS, PASS
+API-06 Authenticated listing 200 PASS, PASS
+API-07 Buyer cannot publish 403 PASS, PASS
+API-08 Chef publishes premium recipe 200 PASS, PASS
+API-09 Blank title rejected 400 PASS, PASS
+API-10 Missing recipe 404 PASS, PASS
+API-11 Unpaid premium content stays hidden 200 PASS, PASS
+API-12 Duplicate email rejected across roles 409 PASS, PASS
+API-13 Create pending order 200 PASS, PASS
+API-14 Duplicate pending order rejected 409 PASS, PASS
+API-15 Buyer sees pending order 200 PASS, PASS
+API-16 Malformed registration email 400 PASS, PASS
+API-17 Seven-character password rejected 400 PASS, PASS
+API-18 Eight-character password accepted 200 PASS, PASS
+API-19 Chef publishes free recipe 200 PASS, PASS
+API-20 Free recipe purchase rejected 400 PASS, PASS
+API-21 Empty ingredient list rejected 200 FAIL, FAIL
+API-22 Empty step list rejected 200 FAIL, FAIL

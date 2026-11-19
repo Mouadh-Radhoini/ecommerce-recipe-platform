@@ -1,0 +1,20 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="5.833126">
+<testsuite name="chef-journey.spec.cjs" timestamp="2026-11-19T22:34:51.263Z" hostname="" tests="1" failures="0" skipped="0" time="1.672" errors="0">
+<testcase name="UI-01 chef publishes a recipe through the form, then logs out" classname="chef-journey.spec.cjs" time="1.672">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts/chef-journey-UI-01-chef-pu-e9c35-ough-the-form-then-logs-out/attachments/Persisted-recipe-a078af72377e47a57217a42dc90c1015337448b8.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="chef-journey.spec.cjs" timestamp="2026-11-19T22:34:51.263Z" hostname="" tests="1" failures="0" skipped="0" time="1.766" errors="0">
+<testcase name="UI-01 chef publishes a recipe through the form, then logs out" classname="chef-journey.spec.cjs" time="1.766">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts/chef-journey-UI-01-chef-pu-e9c35-ough-the-form-then-logs-out-repeat1/attachments/Persisted-recipe-1688698830e9f4a8709279b8e86341e0b8a5c6ea.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

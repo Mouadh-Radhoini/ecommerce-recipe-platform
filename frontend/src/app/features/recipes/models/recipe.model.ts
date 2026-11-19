@@ -2,14 +2,16 @@ export interface Recipe {
     id: string | number;
     title: string;
     description: string;
+    premium: boolean;
+    fullAccess: boolean;
     price?: number;
     rating?: number;
     imageUrl?: string;
     chefName?: string;
     createdAt?: string;
     chefId?: string;
-    ingredients?: Ingredient[];
-    steps?: RecipeStep[];
+    ingredients?: string[] | null;
+    steps?: string[] | null;
     category?: string;
     cookingTime?: number; // in minutes
     servings?: number;
@@ -34,10 +36,11 @@ export interface RecipeStep {
 export interface CreateRecipeRequest {
     title: string;
     description: string;
+    premium: boolean;
     price: number;
     imageUrl?: string;
-    ingredients: Ingredient[];
-    steps: RecipeStep[];
+    ingredients: string[];
+    steps: string[];
     category?: string;
     cookingTime?: number;
     servings?: number;

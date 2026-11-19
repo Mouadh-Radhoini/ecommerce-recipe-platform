@@ -1,5 +1,8 @@
 package com.mouadh.backend.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.mouadh.backend.dto.auth.AuthResponse;
 import com.mouadh.backend.dto.auth.AuthUserResponse;
 import com.mouadh.backend.dto.auth.BuyerRegisterRequest;
@@ -38,7 +41,7 @@ public class AuthService {
     public AuthResponse registerBuyer(BuyerRegisterRequest request) {
 
         if (emailExists(request.getEmail())) {
-            throw new RuntimeException("Email already in use");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already in use");
         }
 
         Buyer buyer = new Buyer();
@@ -55,7 +58,7 @@ public class AuthService {
     public AuthResponse registerChef(ChefRegisterRequest request) {
 
         if (emailExists(request.getEmail())) {
-            throw new RuntimeException("Email already in use");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already in use");
         }
 
         Chef chef = new Chef();
@@ -76,10 +79,10 @@ public class AuthService {
                 .map(b -> (BaseUser) b)
                 .or(() -> chefRepository.findByEmail(request.getEmail())
                         .map(c -> (BaseUser) c))
-                .orElseThrow(() -> new RuntimeException("Invalid credentials"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
         }
 
         return buildAuthResponse(user);

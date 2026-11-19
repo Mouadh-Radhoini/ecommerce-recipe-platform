@@ -1,0 +1,59 @@
+name: Software validation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27031:27017
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'db.adminCommand({ping:1}).ok'"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: |
+            frontend/package-lock.json
+            testing/validation/package-lock.json
+      - run: npm ci --prefix testing/validation
+      - run: testing/validation/node_modules/.bin/playwright install --with-deps chromium
+      - uses: grafana/setup-k6-action@v1
+        with:
+          k6-version: '1.4.2'
+      - run: bash testing/validation/campaign.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-results
+          path: |
+            testing-documentation/13-Test-Results/CI/
+            testing-documentation/13-Test-Results/API/newman.*
+            testing-documentation/13-Test-Results/Unit/
+            testing-documentation/13-Test-Results/Integration/
+            testing-documentation/13-Test-Results/Coverage/
+            testing-documentation/13-Test-Results/Performance/
+            testing-documentation/13-Test-Results/UI/junit.xml
+            testing-documentation/13-Test-Results/Screenshots/run-*.png
+            testing-documentation/13-Test-Results/Logs/spotbugs.xml
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: browser-report
+          path: testing-documentation/13-Test-Results/UI/html/

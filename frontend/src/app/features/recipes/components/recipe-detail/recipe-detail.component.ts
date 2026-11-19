@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 import { RecipeService } from '../../services/recipe.service';
+import { AuthService } from '../../../../core/services/auth.service';
 import { Recipe } from '../../models/recipe.model';
 import { ToastService } from '../../../../shared/services/toast.service';
 import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
@@ -16,6 +17,7 @@ import { RatingStarsComponent } from '../../../../shared/components/rating-stars
     styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent {
+    readonly auth = inject(AuthService);
     recipe = signal<Recipe | null>(null);
     isLoading = signal(false);
     notFound = signal(false);

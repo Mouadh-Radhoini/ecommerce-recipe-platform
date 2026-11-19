@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://api.yourproductiondomain.com',
+    apiUrl: '',
     wsUrl: 'wss://api.yourproductiondomain.com/ws'
 };

@@ -1,5 +1,8 @@
 package com.mouadh.backend.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.mouadh.backend.model.Buyer;
 import com.mouadh.backend.repository.BuyerRepository;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,6 @@ public class BuyerService {
 
     public Buyer getById(String id) {
         return buyerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Buyer not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Buyer not found"));
     }
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecommerce-recipe-backend</a> &gt; <a href="index.source.html" class="el_package">com.mouadh.backend.service</a> &gt; <span class="el_source">RecipeService.java</span></div><h1>RecipeService.java</h1><pre class="source lang-java linenums">package com.mouadh.backend.service;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.mouadh.backend.dto.recipe.RecipeRequest;
+import com.mouadh.backend.dto.recipe.RecipeResponse;
+import com.mouadh.backend.model.Recipe;
+import com.mouadh.backend.repository.RecipeRepository;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class RecipeService {
+
+    private final RecipeRepository recipeRepository;
+    private final RecipeAccessService recipeAccessService;
+
+    public RecipeService(RecipeRepository recipeRepository,
+<span class="fc" id="L23">                         RecipeAccessService recipeAccessService) {</span>
+<span class="fc" id="L24">        this.recipeRepository = recipeRepository;</span>
+<span class="fc" id="L25">        this.recipeAccessService = recipeAccessService;</span>
+<span class="fc" id="L26">    }</span>
+
+    // ---------------- CREATE RECIPE ----------------
+    public RecipeResponse createRecipe(RecipeRequest request, String chefId) {
+
+<span class="pc bpc" id="L31" title="1 of 4 branches missed.">        if (request.isPremium() &amp;&amp; (request.getPrice() == null</span>
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">                || !Double.isFinite(request.getPrice()) || request.getPrice() &lt;= 0)) {</span>
+<span class="fc" id="L33">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, &quot;Premium recipes require a positive price&quot;);</span>
+        }
+
+<span class="fc" id="L36">        Recipe recipe = new Recipe();</span>
+<span class="fc" id="L37">        recipe.setTitle(request.getTitle());</span>
+<span class="fc" id="L38">        recipe.setDescription(request.getDescription());</span>
+<span class="fc" id="L39">        recipe.setIngredients(request.getIngredients());</span>
+<span class="fc" id="L40">        recipe.setSteps(request.getSteps());</span>
+<span class="fc" id="L41">        recipe.setPremium(request.isPremium());</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        recipe.setPrice(request.isPremium() ? request.getPrice() : 0.0);</span>
+<span class="fc" id="L43">        recipe.setChefId(chefId);</span>
+<span class="fc" id="L44">        recipe.setCreatedAt(LocalDateTime.now());</span>
+
+<span class="fc" id="L46">        Recipe saved = recipeRepository.save(recipe);</span>
+
+<span class="fc" id="L48">        return mapToResponse(saved, true);</span>
+    }
+
+    // ---------------- GET ALL RECIPES (PREVIEW) ----------------
+    public List&lt;RecipeResponse&gt; getAllRecipes() {
+<span class="nc" id="L53">        return recipeRepository.findAll()</span>
+<span class="nc" id="L54">                .stream()</span>
+<span class="nc" id="L55">                .map(recipe -&gt; mapToResponse(recipe, false))</span>
+<span class="nc" id="L56">                .collect(Collectors.toList());</span>
+    }
+
+    // ---------------- GET SINGLE RECIPE WITH ACCESS CONTROL ----------------
+    public RecipeResponse getRecipeById(String recipeId, String userId) {
+
+<span class="fc" id="L62">        Recipe recipe = recipeRepository.findById(recipeId)</span>
+<span class="pc" id="L63">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Recipe not found&quot;));</span>
+
+<span class="fc" id="L65">        boolean fullAccess =</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">                !recipe.isPremium()</span>
+<span class="pc bpc" id="L67" title="2 of 4 branches missed.">                        || recipe.getChefId().equals(userId)</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">                        || (userId != null &amp;&amp; recipeAccessService.hasPaidAccess(userId, recipeId));</span>
+
+<span class="fc" id="L70">        return mapToResponse(recipe, fullAccess);</span>
+    }
+
+    // ---------------- MAPPER ----------------
+    private RecipeResponse mapToResponse(Recipe recipe, boolean fullAccess) {
+
+<span class="fc" id="L76">        RecipeResponse response = new RecipeResponse();</span>
+<span class="fc" id="L77">        response.setId(recipe.getId());</span>
+<span class="fc" id="L78">        response.setChefId(recipe.getChefId());</span>
+<span class="fc" id="L79">        response.setCreatedAt(recipe.getCreatedAt());</span>
+<span class="fc" id="L80">        response.setTitle(recipe.getTitle());</span>
+<span class="fc" id="L81">        response.setDescription(recipe.getDescription());</span>
+<span class="fc" id="L82">        response.setPremium(recipe.isPremium());</span>
+<span class="fc" id="L83">        response.setPrice(recipe.getPrice());</span>
+<span class="fc" id="L84">        response.setFullAccess(fullAccess);</span>
+
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (fullAccess) {</span>
+<span class="fc" id="L87">            response.setIngredients(recipe.getIngredients());</span>
+<span class="fc" id="L88">            response.setSteps(recipe.getSteps());</span>
+        }
+
+<span class="fc" id="L91">        return response;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

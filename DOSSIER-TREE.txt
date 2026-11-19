@@ -1,0 +1,591 @@
+ecommerce-recipe-platform/
+├── .github/
+│   └── workflows/
+│       └── validation.yml
+├── backend/
+│   ├── .mvn/
+│   │   └── wrapper/
+│   │       └── maven-wrapper.properties
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── mouadh/
+│   │   │   │           └── backend/
+│   │   │   │               ├── config/
+│   │   │   │               │   ├── CorsConfig.java
+│   │   │   │               │   ├── MongoConfig.java
+│   │   │   │               │   ├── SecurityConfig.java
+│   │   │   │               │   └── StripeConfig.java
+│   │   │   │               ├── controller/
+│   │   │   │               │   ├── AuthController.java
+│   │   │   │               │   ├── BuyerController.java
+│   │   │   │               │   ├── ChefController.java
+│   │   │   │               │   ├── CommentController.java
+│   │   │   │               │   ├── FollowController.java
+│   │   │   │               │   ├── NotificationController.java
+│   │   │   │               │   ├── OrderController.java
+│   │   │   │               │   ├── PaymentController.java
+│   │   │   │               │   └── RecipeController.java
+│   │   │   │               ├── dto/
+│   │   │   │               │   ├── auth/
+│   │   │   │               │   │   ├── AuthResponse.java
+│   │   │   │               │   │   ├── AuthUserResponse.java
+│   │   │   │               │   │   ├── BuyerRegisterRequest.java
+│   │   │   │               │   │   ├── ChefRegisterRequest.java
+│   │   │   │               │   │   └── LoginRequest.java
+│   │   │   │               │   ├── notification/
+│   │   │   │               │   │   └── {NotificationResponse.java}
+│   │   │   │               │   ├── order/
+│   │   │   │               │   │   └── {OrderResponse.java}
+│   │   │   │               │   ├── payment/
+│   │   │   │               │   │   ├── CheckoutRequest.java
+│   │   │   │               │   │   └── PaymentResponse.java
+│   │   │   │               │   └── recipe/
+│   │   │   │               │       ├── RecipeRequest.java
+│   │   │   │               │       └── RecipeResponse.java
+│   │   │   │               ├── exception/
+│   │   │   │               │   ├── GlobalExceptionHandler.java
+│   │   │   │               │   ├── ResourceNotFoundException.java
+│   │   │   │               │   └── UnauthorizedException.java
+│   │   │   │               ├── model/
+│   │   │   │               │   ├── BaseUser.java
+│   │   │   │               │   ├── Buyer.java
+│   │   │   │               │   ├── Chef.java
+│   │   │   │               │   ├── Comment.java
+│   │   │   │               │   ├── Follow.java
+│   │   │   │               │   ├── Notification.java
+│   │   │   │               │   ├── Order.java
+│   │   │   │               │   ├── OrderStatus.java
+│   │   │   │               │   ├── Payment.java
+│   │   │   │               │   ├── PaymentStatus.java
+│   │   │   │               │   └── Recipe.java
+│   │   │   │               ├── repository/
+│   │   │   │               │   ├── BuyerRepository.java
+│   │   │   │               │   ├── ChefRepository.java
+│   │   │   │               │   ├── CommentRepository.java
+│   │   │   │               │   ├── FollowRepository.java
+│   │   │   │               │   ├── NotificationRepository.java
+│   │   │   │               │   ├── OrderRepository.java
+│   │   │   │               │   ├── PaymentRepository.java
+│   │   │   │               │   └── RecipeRepository.java
+│   │   │   │               ├── security/
+│   │   │   │               │   ├── JwtFilter.java
+│   │   │   │               │   ├── JwtService.java
+│   │   │   │               │   └── UserPrincipal.java
+│   │   │   │               ├── service/
+│   │   │   │               │   ├── AuthService.java
+│   │   │   │               │   ├── BuyerService.java
+│   │   │   │               │   ├── ChefService.java
+│   │   │   │               │   ├── CommentService.java
+│   │   │   │               │   ├── FollowService.java
+│   │   │   │               │   ├── NotificationService.java
+│   │   │   │               │   ├── OrderService.java
+│   │   │   │               │   ├── PaymentService.java
+│   │   │   │               │   ├── RecipeAccessService.java
+│   │   │   │               │   └── RecipeService.java
+│   │   │   │               └── BackendApplication.java
+│   │   │   └── resources/
+│   │   │       └── application.yaml
+│   │   └── test/
+│   │       └── java/
+│   │           └── com/
+│   │               └── mouadh/
+│   │                   └── backend/
+│   │                       ├── persistence/
+│   │                       │   └── RecipeMongoIT.java
+│   │                       ├── service/
+│   │                       │   └── BusinessRulesTest.java
+│   │                       └── BackendApplicationTests.java
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   └── pom.xml
+├── frontend/
+│   ├── e2e/
+│   │   ├── page-objects/
+│   │   │   └── recipe-journey.cjs
+│   │   ├── chef-journey.spec.cjs
+│   │   ├── playwright.config.cjs
+│   │   └── record-route-guard.cjs
+│   ├── public/
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── core/
+│   │   │   │   ├── guards/
+│   │   │   │   │   ├── auth.guard.ts
+│   │   │   │   │   └── role.guard.ts
+│   │   │   │   ├── interceptors/
+│   │   │   │   │   ├── auth.interceptor.ts
+│   │   │   │   │   ├── error.interceptor.ts
+│   │   │   │   │   └── loading.interceptor.ts
+│   │   │   │   ├── models/
+│   │   │   │   │   └── user.model.ts
+│   │   │   │   └── services/
+│   │   │   │       ├── auth.service.ts
+│   │   │   │       ├── loading.service.ts
+│   │   │   │       ├── storage.service.ts
+│   │   │   │       └── websocket.service.ts
+│   │   │   ├── features/
+│   │   │   │   ├── auth/
+│   │   │   │   │   ├── components/
+│   │   │   │   │   │   ├── login/
+│   │   │   │   │   │   │   ├── login.component.css
+│   │   │   │   │   │   │   ├── login.component.html
+│   │   │   │   │   │   │   └── login.component.ts
+│   │   │   │   │   │   └── register/
+│   │   │   │   │   │       ├── register.component.css
+│   │   │   │   │   │       ├── register.component.html
+│   │   │   │   │   │       └── register.component.ts
+│   │   │   │   │   └── services/
+│   │   │   │   │       └── auth-api.service.ts
+│   │   │   │   ├── comments/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   └── comment.model.ts
+│   │   │   │   │   └── services/
+│   │   │   │   │       └── comment.service.ts
+│   │   │   │   ├── follows/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   └── follow.model.ts
+│   │   │   │   │   └── services/
+│   │   │   │   │       └── follow.service.ts
+│   │   │   │   ├── notifications/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   └── notification.model.ts
+│   │   │   │   │   └── services/
+│   │   │   │   │       └── notification.service.ts
+│   │   │   │   ├── orders/
+│   │   │   │   │   ├── components/
+│   │   │   │   │   │   ├── checkout/
+│   │   │   │   │   │   │   └── checkout.component.ts
+│   │   │   │   │   │   ├── order-detail/
+│   │   │   │   │   │   │   └── order-detail.component.ts
+│   │   │   │   │   │   └── order-list/
+│   │   │   │   │   │       └── order-list.component.ts
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   └── order.model.ts
+│   │   │   │   │   └── services/
+│   │   │   │   │       └── order.service.ts
+│   │   │   │   ├── payments/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   └── payment.model.ts
+│   │   │   │   │   └── services/
+│   │   │   │   │       └── payment.service.ts
+│   │   │   │   ├── profile/
+│   │   │   │   │   ├── components/
+│   │   │   │   │   │   ├── chef-dashboard/
+│   │   │   │   │   │   │   └── chef-dashboard.component.ts
+│   │   │   │   │   │   ├── edit-profile/
+│   │   │   │   │   │   │   └── edit-profile.component.ts
+│   │   │   │   │   │   └── user-profile/
+│   │   │   │   │   │       └── user-profile.component.ts
+│   │   │   │   │   └── services/
+│   │   │   │   │       └── profile.service.ts
+│   │   │   │   └── recipes/
+│   │   │   │       ├── components/
+│   │   │   │       │   ├── recipe-detail/
+│   │   │   │       │   │   ├── recipe-detail.component.css
+│   │   │   │       │   │   ├── recipe-detail.component.html
+│   │   │   │       │   │   └── recipe-detail.component.ts
+│   │   │   │       │   ├── recipe-form/
+│   │   │   │       │   │   └── recipe-form.component.ts
+│   │   │   │       │   └── recipe-list/
+│   │   │   │       │       ├── recipe-list.component.css
+│   │   │   │       │       ├── recipe-list.component.html
+│   │   │   │       │       └── recipe-list.component.ts
+│   │   │   │       ├── models/
+│   │   │   │       │   └── recipe.model.ts
+│   │   │   │       └── services/
+│   │   │   │           └── recipe.service.ts
+│   │   │   ├── layout/
+│   │   │   │   ├── footer/
+│   │   │   │   │   └── footer.component.ts
+│   │   │   │   └── header/
+│   │   │   │       └── header.component.ts
+│   │   │   ├── shared/
+│   │   │   │   ├── components/
+│   │   │   │   │   ├── button/
+│   │   │   │   │   │   └── button.component.ts
+│   │   │   │   │   ├── card/
+│   │   │   │   │   │   └── card.component.ts
+│   │   │   │   │   ├── loader/
+│   │   │   │   │   │   └── loader.component.ts
+│   │   │   │   │   ├── modal/
+│   │   │   │   │   │   └── modal.component.ts
+│   │   │   │   │   ├── rating-stars/
+│   │   │   │   │   │   └── rating-stars.component.ts
+│   │   │   │   │   ├── toast/
+│   │   │   │   │   │   └── toast-container.component.ts
+│   │   │   │   │   └── unauthorized/
+│   │   │   │   │       └── unauthorized.component.ts
+│   │   │   │   ├── directives/
+│   │   │   │   │   └── lazy-load.directive.ts
+│   │   │   │   ├── pipes/
+│   │   │   │   │   └── time-ago.pipe.ts
+│   │   │   │   └── services/
+│   │   │   │       ├── modal.service.ts
+│   │   │   │       └── toast.service.ts
+│   │   │   ├── app.config.ts
+│   │   │   ├── app.css
+│   │   │   ├── app.routes.ts
+│   │   │   ├── app.spec.ts
+│   │   │   └── app.ts
+│   │   ├── environments/
+│   │   │   ├── environment.prod.ts
+│   │   │   └── environment.ts
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   └── styles.css
+│   ├── .postcssrc.json
+│   ├── angular.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── proxy.conf.json
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   └── tsconfig.spec.json
+├── testing/
+│   └── validation/
+│       ├── campaign.sh
+│       ├── package-lock.json
+│       ├── package.json
+│       ├── redact-k6-summary.py
+│       └── run-newman.cjs
+├── testing-documentation/
+│   ├── 07-Unit-Tests/
+│   │   ├── evidence/
+│   │   │   └── README.md
+│   │   ├── README.md
+│   │   ├── Unit-Test-Report.md
+│   │   └── Unit-Test-Report.pdf
+│   ├── 08-Integration-Tests/
+│   │   ├── evidence/
+│   │   │   └── README.md
+│   │   ├── Integration-Test-Report.md
+│   │   ├── Integration-Test-Report.pdf
+│   │   └── README.md
+│   ├── 09-Postman/
+│   │   ├── authentication/
+│   │   │   └── README.md
+│   │   ├── collections/
+│   │   │   └── README.md
+│   │   ├── environments/
+│   │   │   └── README.md
+│   │   ├── evidence/
+│   │   │   └── README.md
+│   │   ├── execution-reports/
+│   │   │   └── README.md
+│   │   ├── negative-tests/
+│   │   │   └── README.md
+│   │   ├── order-api/
+│   │   │   └── README.md
+│   │   ├── recipe-api/
+│   │   │   └── README.md
+│   │   ├── API-Test-Report.md
+│   │   ├── API-Test-Report.pdf
+│   │   ├── Ecommerce-Recipe-Platform.postman_collection.json
+│   │   ├── README.md
+│   │   └── Test-Environment.postman_environment.json
+│   ├── 10-UI-Tests/
+│   │   ├── configuration/
+│   │   │   └── README.md
+│   │   ├── critical-user-journey/
+│   │   │   └── README.md
+│   │   ├── evidence/
+│   │   │   └── README.md
+│   │   ├── execution-reports/
+│   │   │   └── README.md
+│   │   ├── login-scenario/
+│   │   │   └── README.md
+│   │   ├── page-objects/
+│   │   │   └── README.md
+│   │   ├── screenshots/
+│   │   │   └── README.md
+│   │   ├── README.md
+│   │   ├── UI-Test-Report.md
+│   │   └── UI-Test-Report.pdf
+│   ├── 11-Performance/
+│   │   ├── evidence/
+│   │   │   └── README.md
+│   │   ├── k6-scripts/
+│   │   │   └── README.md
+│   │   ├── load-configuration/
+│   │   │   └── README.md
+│   │   ├── measurements/
+│   │   │   └── README.md
+│   │   ├── performance-report/
+│   │   │   └── README.md
+│   │   ├── security-accessibility/
+│   │   │   └── README.md
+│   │   ├── Non-Functional-Test-Report.md
+│   │   ├── Non-Functional-Test-Report.pdf
+│   │   ├── README.md
+│   │   └── recipes-load-test.js
+│   ├── 12-Bug-Reports/
+│   │   ├── evidence/
+│   │   │   └── README.md
+│   │   ├── BUG-01.md
+│   │   ├── Bug-Register.md
+│   │   ├── Bug-Register.pdf
+│   │   ├── BUG-REPORT-TEMPLATE.md
+│   │   ├── README.md
+│   │   ├── Static-Analysis-Report.pdf
+│   │   └── STATIC-ANALYSIS.md
+│   ├── 13-Test-Results/
+│   │   ├── API/
+│   │   │   ├── baseline.json
+│   │   │   ├── baseline.log
+│   │   │   ├── bug-01-before.json
+│   │   │   ├── bug-01-before.log
+│   │   │   ├── invalid-jwt-assertion-draft.json
+│   │   │   ├── newman.json
+│   │   │   └── TC-04-recipes.json
+│   │   ├── api-test-reports/
+│   │   │   └── README.md
+│   │   ├── CI/
+│   │   │   ├── backend-ready.log
+│   │   │   ├── backend-server.log
+│   │   │   ├── backend-verify.log
+│   │   │   ├── exit-codes.tsv
+│   │   │   ├── frontend-build.log
+│   │   │   ├── frontend-install.log
+│   │   │   ├── frontend-ready.log
+│   │   │   ├── frontend-server.log
+│   │   │   ├── frontend-test.log
+│   │   │   ├── integration-repeat.log
+│   │   │   ├── k6-1.log
+│   │   │   ├── k6-2.log
+│   │   │   ├── k6-export-1.log
+│   │   │   ├── k6-export-2.log
+│   │   │   ├── newman.log
+│   │   │   ├── playwright.log
+│   │   │   └── spotbugs.log
+│   │   ├── ci-execution-reports/
+│   │   │   └── README.md
+│   │   ├── code-coverage/
+│   │   │   └── README.md
+│   │   ├── Coverage/
+│   │   │   ├── com.mouadh.backend/
+│   │   │   │   ├── BackendApplication.html
+│   │   │   │   ├── BackendApplication.java.html
+│   │   │   │   ├── index.html
+│   │   │   │   └── index.source.html
+│   │   │   ├── com.mouadh.backend.config/
+│   │   │   │   ├── CorsConfig.html
+│   │   │   │   ├── CorsConfig.java.html
+│   │   │   │   ├── index.html
+│   │   │   │   ├── index.source.html
+│   │   │   │   ├── MongoConfig.html
+│   │   │   │   ├── MongoConfig.java.html
+│   │   │   │   ├── SecurityConfig.html
+│   │   │   │   └── SecurityConfig.java.html
+│   │   │   ├── com.mouadh.backend.controller/
+│   │   │   │   ├── AuthController.html
+│   │   │   │   ├── AuthController.java.html
+│   │   │   │   ├── BuyerController.html
+│   │   │   │   ├── BuyerController.java.html
+│   │   │   │   ├── ChefController.html
+│   │   │   │   ├── ChefController.java.html
+│   │   │   │   ├── CommentController.html
+│   │   │   │   ├── CommentController.java.html
+│   │   │   │   ├── FollowController.html
+│   │   │   │   ├── FollowController.java.html
+│   │   │   │   ├── index.html
+│   │   │   │   ├── index.source.html
+│   │   │   │   ├── NotificationController.html
+│   │   │   │   ├── NotificationController.java.html
+│   │   │   │   ├── OrderController.html
+│   │   │   │   ├── OrderController.java.html
+│   │   │   │   ├── RecipeController.html
+│   │   │   │   └── RecipeController.java.html
+│   │   │   ├── com.mouadh.backend.dto.auth/
+│   │   │   │   ├── BuyerRegisterRequest.html
+│   │   │   │   ├── BuyerRegisterRequest.java.html
+│   │   │   │   ├── ChefRegisterRequest.html
+│   │   │   │   ├── ChefRegisterRequest.java.html
+│   │   │   │   ├── index.html
+│   │   │   │   ├── index.source.html
+│   │   │   │   ├── LoginRequest.html
+│   │   │   │   └── LoginRequest.java.html
+│   │   │   ├── com.mouadh.backend.dto.recipe/
+│   │   │   │   ├── index.html
+│   │   │   │   ├── index.source.html
+│   │   │   │   ├── RecipeRequest.html
+│   │   │   │   ├── RecipeRequest.java.html
+│   │   │   │   ├── RecipeResponse.html
+│   │   │   │   └── RecipeResponse.java.html
+│   │   │   ├── com.mouadh.backend.exception/
+│   │   │   │   ├── GlobalExceptionHandler.html
+│   │   │   │   ├── GlobalExceptionHandler.java.html
+│   │   │   │   ├── index.html
+│   │   │   │   └── index.source.html
+│   │   │   ├── com.mouadh.backend.model/
+│   │   │   │   ├── Buyer.html
+│   │   │   │   ├── Buyer.java.html
+│   │   │   │   ├── Comment.html
+│   │   │   │   ├── Comment.java.html
+│   │   │   │   ├── Follow.html
+│   │   │   │   ├── Follow.java.html
+│   │   │   │   ├── index.html
+│   │   │   │   ├── index.source.html
+│   │   │   │   ├── Notification.html
+│   │   │   │   ├── Notification.java.html
+│   │   │   │   ├── OrderStatus.html
+│   │   │   │   ├── OrderStatus.java.html
+│   │   │   │   ├── PaymentStatus.html
+│   │   │   │   └── PaymentStatus.java.html
+│   │   │   ├── com.mouadh.backend.security/
+│   │   │   │   ├── index.html
+│   │   │   │   ├── index.source.html
+│   │   │   │   ├── JwtFilter.html
+│   │   │   │   ├── JwtFilter.java.html
+│   │   │   │   ├── JwtService.html
+│   │   │   │   └── JwtService.java.html
+│   │   │   ├── com.mouadh.backend.service/
+│   │   │   │   ├── AuthService.html
+│   │   │   │   ├── AuthService.java.html
+│   │   │   │   ├── BuyerService.html
+│   │   │   │   ├── BuyerService.java.html
+│   │   │   │   ├── ChefService.html
+│   │   │   │   ├── ChefService.java.html
+│   │   │   │   ├── CommentService.html
+│   │   │   │   ├── CommentService.java.html
+│   │   │   │   ├── FollowService.html
+│   │   │   │   ├── FollowService.java.html
+│   │   │   │   ├── index.html
+│   │   │   │   ├── index.source.html
+│   │   │   │   ├── NotificationService.html
+│   │   │   │   ├── NotificationService.java.html
+│   │   │   │   ├── OrderService.html
+│   │   │   │   ├── OrderService.java.html
+│   │   │   │   ├── RecipeAccessService.html
+│   │   │   │   ├── RecipeAccessService.java.html
+│   │   │   │   ├── RecipeService.html
+│   │   │   │   └── RecipeService.java.html
+│   │   │   ├── jacoco-resources/
+│   │   │   │   ├── branchfc.gif
+│   │   │   │   ├── branchnc.gif
+│   │   │   │   ├── branchpc.gif
+│   │   │   │   ├── bundle.gif
+│   │   │   │   ├── class.gif
+│   │   │   │   ├── down.gif
+│   │   │   │   ├── greenbar.gif
+│   │   │   │   ├── group.gif
+│   │   │   │   ├── method.gif
+│   │   │   │   ├── package.gif
+│   │   │   │   ├── prettify.css
+│   │   │   │   ├── prettify.js
+│   │   │   │   ├── redbar.gif
+│   │   │   │   ├── report.css
+│   │   │   │   ├── report.gif
+│   │   │   │   ├── session.gif
+│   │   │   │   ├── sort.gif
+│   │   │   │   ├── sort.js
+│   │   │   │   ├── source.gif
+│   │   │   │   └── up.gif
+│   │   │   ├── Coverage-Report.pdf
+│   │   │   ├── index.html
+│   │   │   ├── jacoco-sessions.html
+│   │   │   ├── jacoco.csv
+│   │   │   ├── jacoco.xml
+│   │   │   └── README.md
+│   │   ├── Integration/
+│   │   │   ├── repeat/
+│   │   │   │   └── TEST-com.mouadh.backend.persistence.RecipeMongoIT.xml
+│   │   │   └── TEST-com.mouadh.backend.persistence.RecipeMongoIT.xml
+│   │   ├── integration-test-reports/
+│   │   │   └── README.md
+│   │   ├── Logs/
+│   │   │   ├── frontend-audit-all.json
+│   │   │   ├── frontend-audit-runtime.json
+│   │   │   ├── maven-baseline.log
+│   │   │   ├── spotbugs-java25-failure.log
+│   │   │   ├── spotbugs.xml
+│   │   │   ├── TC-02.txt
+│   │   │   ├── TC-04.txt
+│   │   │   ├── test-tools-audit.json
+│   │   │   └── test-tools-install.log
+│   │   ├── Performance/
+│   │   │   ├── run-1.json
+│   │   │   └── run-2.json
+│   │   ├── performance-results/
+│   │   │   └── README.md
+│   │   ├── Regression/
+│   │   │   ├── exit-codes.tsv
+│   │   │   ├── README.md
+│   │   │   └── Regression-Report.pdf
+│   │   ├── regression-testing/
+│   │   │   └── README.md
+│   │   ├── Screenshots/
+│   │   │   ├── run-1.png
+│   │   │   └── run-2.png
+│   │   ├── screenshots/
+│   │   │   ├── README.md
+│   │   │   ├── TC-01-Unauthorized.png
+│   │   │   ├── TC-02Registration.png
+│   │   │   ├── TC-03-Login.png
+│   │   │   └── TC-04-Recipes.png
+│   │   ├── UI/
+│   │   │   ├── artifacts/
+│   │   │   │   ├── chef-journey-UI-01-chef-pu-e9c35-ough-the-form-then-logs-out/
+│   │   │   │   │   ├── attachments/
+│   │   │   │   │   │   └── Persisted-recipe-a078af72377e47a57217a42dc90c1015337448b8.png
+│   │   │   │   │   └── published-recipe.png
+│   │   │   │   ├── chef-journey-UI-01-chef-pu-e9c35-ough-the-form-then-logs-out-repeat1/
+│   │   │   │   │   ├── attachments/
+│   │   │   │   │   │   └── Persisted-recipe-1688698830e9f4a8709279b8e86341e0b8a5c6ea.png
+│   │   │   │   │   └── published-recipe.png
+│   │   │   │   └── .last-run.json
+│   │   │   ├── html/
+│   │   │   │   ├── data/
+│   │   │   │   │   ├── 99d1c28cd61d760491a1e98fc0f6305768227d33.png
+│   │   │   │   │   └── eafd6651bd6860ae05b9aba566585f51e8b2320e.png
+│   │   │   │   └── index.html
+│   │   │   ├── anonymous-route-guard.log
+│   │   │   ├── anonymous-route-guard.zip
+│   │   │   └── junit.xml
+│   │   ├── ui-test-reports/
+│   │   │   └── README.md
+│   │   ├── Unit/
+│   │   │   ├── TEST-com.mouadh.backend.BackendApplicationTests.xml
+│   │   │   └── TEST-com.mouadh.backend.service.BusinessRulesTest.xml
+│   │   ├── unit-test-reports/
+│   │   │   └── README.md
+│   │   └── README.md
+│   ├── archive/
+│   │   ├── 01-Project-Overview.pdf
+│   │   ├── 02-Risk-Analysis.pdf
+│   │   ├── 03-Test-Plan.pdf
+│   │   ├── 04-Requirements-Matrix.pdf
+│   │   ├── 05-Test-Cases.pdf
+│   │   ├── 06-State-Diagram.pdf
+│   │   ├── 14-Final-Report.pdf
+│   │   └── 14-Previous-Campaign-Report.pdf
+│   ├── sources/
+│   │   ├── 01-Project-Overview.md
+│   │   ├── 02-Risk-Analysis.md
+│   │   ├── 03-Test-Plan.md
+│   │   ├── 04-Requirements-Matrix.md
+│   │   ├── 05-Test-Cases.md
+│   │   ├── 06-State-Diagram.md
+│   │   ├── order-states.dot
+│   │   └── order-states.svg
+│   ├── 01-Project-Overview.pdf
+│   ├── 02-Risk-Analysis.pdf
+│   ├── 03-Test-Plan.pdf
+│   ├── 04-Requirements-Matrix.pdf
+│   ├── 05-Test-Cases.pdf
+│   ├── 06-State-Diagram.pdf
+│   ├── 14-Final-Report-Executed.md
+│   ├── 14-Final-Report-Executed.pdf
+│   ├── 14-Final-Report.pdf
+│   ├── ENVIRONMENT-VERIFICATION.md
+│   ├── README.md
+│   ├── REFERENCES.md
+│   ├── TESTING-SUMMARY.md
+│   └── TRACEABILITY-AND-REGRESSION.md
+├── .gitignore
+├── DOSSIER-TREE.txt
+├── HOW-TO-RUN-TESTS.md
+├── PRESENTATION-DEMO.md
+└── presentation.pptx

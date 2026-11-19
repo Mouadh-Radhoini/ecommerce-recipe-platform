@@ -1,0 +1,11 @@
+digraph Order {
+  graph [rankdir=LR, bgcolor="transparent", pad=0.18];
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fillcolor="#E8F2F1", color="#275462", margin="0.18,0.13"];
+  edge [fontname="DejaVu Sans", fontsize=11, color="#275462"];
+  start [label="", shape=point, width=0.12, fillcolor="#275462"];
+  PENDING; PAID;
+  FAILED [style="rounded,dashed,filled", fillcolor="#F5F1E9", color="#96684D"];
+  start -> PENDING [label=" eligible order "];
+  PENDING -> PAID [label=" markOrderPaid() "];
+  PENDING -> FAILED [style=dashed, label=" proposed only ", color="#96684D"];
+}

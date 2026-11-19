@@ -69,7 +69,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 // Token parsing failed (malformed, wrong signature, etc.)
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 response.setContentType("application/json");
-                response.getWriter().write("{\"error\":\"Invalid token: " + e.getMessage() + "\"}");
+                response.getWriter().write("{\"error\":\"Invalid or expired token\"}");
                 return;
             }
         }

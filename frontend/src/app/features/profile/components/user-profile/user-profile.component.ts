@@ -1,22 +1,17 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
     selector: 'app-user-profile',
-    standalone: true,
-    imports: [CommonModule],
     template: `
-    <div class="profile-container">
-      <h1>User Profile</h1>
-      <p>Component placeholder - implement user profile view here</p>
-    </div>
-  `,
-    styles: [`
-    .profile-container {
-      padding: 2rem;
-    }
-  `]
+        <h1>My profile</h1>
+        @if (auth.currentUser(); as user) {
+            <p>{{ user.name }}</p>
+            <p>{{ user.email }}</p>
+            <p>{{ user.role }}</p>
+        }
+    `
 })
 export class UserProfileComponent {
-    // TODO: Implement profile view with user info and recipes (for chefs)
+    readonly auth = inject(AuthService);
 }

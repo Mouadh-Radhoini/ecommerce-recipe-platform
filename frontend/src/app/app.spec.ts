@@ -1,23 +1,27 @@
 import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from './app';
 
-describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-    }).compileComponents();
-  });
+describe('Recipe Marketplace', () => {
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [AppComponent],
+    providers: [provideRouter([])],
+  }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
+  it('renders the application shell and routed content outlet', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
     await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
+    const root: HTMLElement = fixture.nativeElement;
+    expect(root.querySelector('app-header')?.textContent).toContain('Recipe Marketplace');
+    expect(root.querySelector('main router-outlet')).toBeTruthy();
+    expect(root.querySelector('app-footer')).toBeTruthy();
+  });
+
+  it('offers sign-in and registration links to visitors', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    await fixture.whenStable();
+    const root: HTMLElement = fixture.nativeElement;
+    expect(root.querySelector('a[href="/auth/login"]')).toBeTruthy();
+    expect(root.querySelector('a[href="/auth/register"]')).toBeTruthy();
   });
 });

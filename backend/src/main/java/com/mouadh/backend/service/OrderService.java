@@ -1,5 +1,9 @@
 package com.mouadh.backend.service;
 
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.mouadh.backend.model.Order;
 import com.mouadh.backend.model.OrderStatus;
 import com.mouadh.backend.model.Recipe;
@@ -25,29 +29,36 @@ public class OrderService {
     public Order createOrder(String buyerId, String recipeId) {
 
         Recipe recipe = recipeRepository.findById(recipeId)
-                .orElseThrow(() -> new RuntimeException("Recipe not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Recipe not found"));
 
         if (!recipe.isPremium()) {
-            throw new RuntimeException("Free recipes do not require purchase");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Free recipes do not require purchase");
         }
 
         if (recipe.getChefId().equals(buyerId)) {
-            throw new RuntimeException("Chef cannot buy own recipe");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Chef cannot buy own recipe");
         }
 
         orderRepository.findByBuyerIdAndRecipeId(buyerId, recipeId)
                 .ifPresent(o -> {
-                    throw new RuntimeException("Recipe already purchased");
+                    throw new ResponseStatusException(HttpStatus.CONFLICT, "Recipe already purchased");
                 });
 
         Order order = new Order();
+        // Stable ID makes simultaneous attempts compete for the same MongoDB document.
+        // The lookup above also recognizes older orders with generated IDs.
+        order.setId(buyerId + ":" + recipeId);
         order.setBuyerId(buyerId);
         order.setRecipeId(recipeId);
         order.setAmount(recipe.getPrice());
         order.setStatus(OrderStatus.PENDING);
         order.setCreatedAt(LocalDateTime.now());
 
-        return orderRepository.save(order);
+        try {
+            return orderRepository.insert(order);
+        } catch (DuplicateKeyException exception) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Recipe already purchased", exception);
+        }
     }
 
     public List<Order> getBuyerOrders(String buyerId) {
@@ -56,7 +67,7 @@ public class OrderService {
 
     public void markOrderPaid(String orderId) {
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
 
         order.setStatus(OrderStatus.PAID);
         orderRepository.save(order);

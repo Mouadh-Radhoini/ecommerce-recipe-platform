@@ -1,7 +1,7 @@
 package com.mouadh.backend.dto.recipe;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.List;
@@ -14,10 +14,10 @@ public class RecipeRequest {
     @NotBlank
     private String description;
 
-    @NotNull
+    @NotEmpty
     private List<String> ingredients;
 
-    @NotNull
+    @NotEmpty
     private List<String> steps;
 
     private boolean premium;
